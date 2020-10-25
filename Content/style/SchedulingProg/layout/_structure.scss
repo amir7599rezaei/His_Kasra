@@ -1,0 +1,102 @@
+.str-item{
+    position:relative;
+
+    &.m-str,&.M-str,&.Mornings-str,
+    &.e-str,&.E-str,&.Evenings-str,
+    &.n-str,&.N-str,&.Night-str{
+        color:white;
+        height:$str-item-height;
+        width:100%;
+        max-width:$monthly-day-box-width;
+        border:1px solid #ccc;
+        border-radius:3px;
+        vertical-align:middle;
+        line-height:$str-item-height - 1;
+        font-size:12px;
+        padding:0 3px;
+        position:relative;
+
+        @include none-select();
+
+        @include clearfix();
+
+        .str-name,
+        .str-prop,
+        .str-num{
+            display:inline-block;
+        }
+
+        .str-name{
+            //float:right;
+        }
+
+        .str-prop{
+            //float:left;
+        }
+
+        .str-num{
+            position: absolute;
+            left: 2px;
+            font-size: 10px;
+        }
+    }
+
+    .specialItem-icon{
+        float: left;
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .str-close-btn{
+        color:white;
+        background-color:rgba(black, 0.5);
+        padding:2px;
+        position:absolute;
+        line-height: 7px;
+        padding: 3px;
+        border-radius: 50%;
+        left: 0;
+        cursor:pointer;
+        display:inline-block;
+    }
+
+
+    &.m-str,&.M-str,&.Mornings-str{
+        background-color:$m-str-bg-color;
+        border-color:$m-str-bg-color;
+    }
+
+    &.e-str,&.E-str,&.Evenings-str{
+        background-color:$e-str-bg-color;
+        border-color:$e-str-bg-color;
+    }
+
+    &.n-str,&.N-str,&.Night-str{
+        background-color:$n-str-bg-color;
+        border-color:$n-str-bg-color;
+    }
+
+
+    &.other-dept{
+        &.m-str,&.M-str,&.Mornings-str,
+        &.e-str,&.E-str,&.Evenings-str,
+        &.n-str,&.N-str,&.Night-str{
+            background-color:#e7e7e7;
+        }
+
+        &.m-str,&.M-str,&.Mornings-str{
+            border-color:$m-str-bg-color;
+            color:$m-str-bg-color;
+        }
+
+        &.e-str,&.E-str,&.Evenings-str{
+            border-color:$e-str-bg-color;
+            color:$e-str-bg-color;
+        }
+
+        &.n-str,&.N-str,&.Night-str{
+            border-color:$n-str-bg-color;
+            color:$n-str-bg-color;
+        }
+    }
+}

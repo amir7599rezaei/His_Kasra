@@ -1,0 +1,14 @@
+<div class="ctrl-dropdown-wrapper sort-dropdown" [ngClass]="{'show':service.showFilterComponent}" name="filter-dropdown-component">
+  <fieldset *ngFor="let filterItem of service.listAvailableFilter" name="filter-dropdown-component">
+    <legend name="filter-dropdown-component">
+      <span name="filter-dropdown-component">{{filterItem.description}}</span>
+    </legend>
+    <div class="fieldset-inner-wrapper" name="filter-dropdown-component">
+      <div class="radioButton" *ngFor="let item of filterItem.FilterValue" [ngStyle]="{display : item.Type == 'img' ? 'none':'block'}" name="filter-dropdown-component">
+        <input type="checkbox" name="checkBoxFilter" [(ngModel)]="item.hasFilter" (change)="changeCheckBox()" name="filter-dropdown-component">
+        <label name="filter-dropdown-component">{{item.description}}</label>
+      </div>
+    </div>
+  </fieldset>
+  <button class="btnkasra btn-default" style="margin-top: 10px;" (click)="service.filterList();service.saveFilter();closeFilterComponent()" name="filter-dropdown-component">فیلتر</button>
+</div>

@@ -1,0 +1,45 @@
+.pager-wrapper{
+    //display:inline-block;
+    margin-bottom:10px;
+
+    .btnkasra{
+        padding:0;
+        width:24px;
+        margin-left:5px;
+
+        i{
+            margin:0;
+            padding:0;
+        }
+
+        &.active{
+            cursor:default;
+        }
+    }
+
+    .pager-list-numbers{
+        display:inline-block;
+        margin:0;
+        list-style:none;
+        padding:0 8px;
+
+        li{
+            display:inline-block;
+            //margin-left:5px;
+
+            &:last-child{
+                margin:0;
+            }
+        }
+    }
+
+    .pager-nav{
+        i{
+            font-size:10px;
+        }
+
+        &.pager-last{
+            letter-spacing: -2px;
+        }
+    }
+}

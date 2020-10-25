@@ -1,0 +1,32 @@
+<div name="sort-dropdown-component" class="ctrl-dropdown-wrapper sort-dropdown" [ngClass]="{'show':service.sort_setting.isShow}">
+	<fieldset name="sort-dropdown-component">
+		<legend name="sort-dropdown-component">
+			<span name="sort-dropdown-component">{{service.Dictionary.sort.sortItems}}</span>
+		</legend>
+		<div class="fieldset-inner-wrapper" name="sort-dropdown-component">
+			<ng-container *ngFor="let sortItem of service.listPersonItems">
+				<div *ngIf="sortItem.Sortable" class="radioButton" name="sort-dropdown-component">
+					<input (click)="service.sort_setting.id = sortItem.Id" type="radio" name="sortNameDropdown" [value]="sortItem.Name" [(ngModel)]="service.sort_setting.sortItem">
+					<label name="sort-dropdown-component">{{sortItem.Description}}</label>
+				</div>				
+			</ng-container>
+		</div>
+	</fieldset>
+	<fieldset name="sort-dropdown-component">
+		<legend name="sort-dropdown-component">
+			<span name="sort-dropdown-component">{{service.Dictionary.sort.sortTypes}}</span>
+		</legend>
+		<div class="fieldset-inner-wrapper" name="sort-dropdown-component">
+			<div class="radioButton display-inline-block" name="sort-dropdown-component">
+				<input type="radio" name="sortTypeDropdown" value="Asc" [(ngModel)]="service.sort_setting.sortType">
+				<label name="sort-dropdown-component">{{service.Dictionary.sort.asc}}</label>
+			</div>
+			<div class="radioButton display-inline-block" name="sort-dropdown-component">
+				<input type="radio" name="sortTypeDropdown" value="Desc" [(ngModel)]="service.sort_setting.sortType">
+				<label name="sort-dropdown-component">{{service.Dictionary.sort.desc}}</label>
+			</div>
+		</div>
+	</fieldset>
+	<button class="btnkasra btn-default" style="margin-top: 10px;" (click)="service.sort();service.saveSort();closeSortComponent()"
+	 name="sort-dropdown-component">{{service.Dictionary.sort.sort}}</button>
+</div>

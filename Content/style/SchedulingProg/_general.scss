@@ -1,0 +1,245 @@
+.table-row{
+    display: table;
+    width: 100%;
+    
+    .table-cell{
+        display: table-cell;
+    }
+}
+
+.align-center{
+    text-align:center;
+}
+
+.hide{
+    display:none;
+}
+
+dp-date-picker.dp-material .dp-picker-input{
+    color: black;
+    width: 100%;
+    height: 25px;
+    font-size: 12px;
+    padding: 0px 2px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;    
+}
+
+.dp-popup{
+    color: black;
+}
+
+.k-autocomplete,.k-multiselect{
+    height:25px;
+}
+
+.k-multiselect{
+    .k-multiselect-wrap{
+        .k-button{
+            height:21px;
+            min-height:21px;
+        }
+
+        .k-i-close{
+            top:0 !important;
+        }
+    }
+}
+
+.k-autocomplete{
+    &.k-header{
+        background-color: white;
+        background-image: none;
+        border: 1px solid #ccc;
+        color: #333;
+    }
+
+    .k-input{
+        color: #333;
+        font-size: 12px !important;
+    }
+}
+
+.toolbar{
+    .filterbar{
+        .kasra-form-control{
+            margin-bottom:0;
+            margin-left:5px;
+
+            .k-autocomplete,.k-multiselect{
+                border: 1px solid #4a90e2 !important;
+                border-radius: 5px !important;
+                color: rgb(101, 101, 101) !important;
+                background-color: rgb(255, 255, 255) !important;
+            }
+            select{
+                border: 1px solid #4a90e2 !important;
+                //height:28px;
+                vertical-align:middle;
+            }
+        }
+    }
+}
+
+.btnkasra {
+    margin-left: 5px;
+    position:relative;
+
+    &.str-btn{
+        min-width: 60px;
+        text-align: right;
+
+        &.m-str,&.M-str,&.Mornings-str{
+            @include button-variant(white, $m-str-bg-color, $m-str-bg-color);
+        }
+
+        &.e-str,&.E-str,&.Evenings-str{
+            @include button-variant(white, $e-str-bg-color, $e-str-bg-color);
+        }
+
+        &.n-str,&.N-str,&.Night-str{
+            @include button-variant(white, $n-str-bg-color, $n-str-bg-color);
+        }
+    }
+}
+
+.checkmark {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    position:absolute;
+    display:none;
+    text-align:center;
+    padding:3px;
+    line-height: 0;
+    top: 2px;
+    left: 2px;
+    border-radius: 2px;
+
+    i{
+        display:inline-block;
+        vertical-align:middle;
+        text-align:center;
+        color:white;
+        font-size:10px;
+        margin:0;
+    }
+
+    &.selected{
+        display:block;
+    }
+}
+
+
+.btnkasra:last-child {
+    margin: 0;
+}
+
+.payment_displayName {
+    display: inline-block;
+    border: 1px solid #0078de;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 0.84rem;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    background-color: #eee;
+}
+
+.department-dropdown{
+    .dropdown{
+        .dropdown-toggle{
+            display: inline-block;
+            border: 1px solid #0078de;
+            border-radius: 5px;
+            padding-right: 10px;
+            padding-left: 0;
+            margin: 0;
+            font-size: 0.84rem;
+            height: 25px;
+            line-height: 25px;
+            min-width: 250px;
+            text-align: right;
+            background-color: white;  
+            
+            .placeholder {
+                display: inline-block;
+                width: 90%;
+                max-width: 220px;
+                overflow: hidden;
+                vertical-align: middle;
+                text-overflow: ellipsis;
+            }  
+        }
+
+        .dropdown-menu {
+            max-height: 300px;
+            overflow-y: auto; 
+            
+            .mat-tree-node {
+                min-height: 25px;
+                line-height: 25px;
+            }   
+            
+            button {
+                border: 0;
+                padding: 0;
+                background-color: transparent;        
+            } 
+            
+            .material-icons {
+                font-size: 1rem;
+            } 
+            
+            .mat-checkbox-ripple {
+                height: 24px;
+                width: 24px;
+                left: calc(50% - 12px);
+                top: calc(50% - 12px);                
+            }    
+            
+            .mat-checkbox-frame {
+                display: none;
+            }                                                          
+        }
+    }
+}
+
+.top-wrapper{
+    @include mk-row();
+
+    .dropdown{
+        .dropdown-menu{
+            li{
+                a{
+                    display:block;
+                    white-space:nowrap;
+                    padding: 5px 15px;
+
+                    span{
+                        display: inline-block;
+
+                        &.label:after {
+                            content: ":";
+                            padding: 0 5px;
+                        }
+
+                        &.spliter {
+                            padding: 0 10px;
+
+                            &:after{
+                                content: "/";
+                            }
+
+                            &:last-child:after{
+                                content:"";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

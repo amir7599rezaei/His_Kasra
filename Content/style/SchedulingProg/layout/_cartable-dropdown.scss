@@ -1,0 +1,60 @@
+.cartable-dropdown-wrapper{
+    .dropdown-menu{
+        padding:0;
+
+        .kasra-form-control{
+            margin:0;
+        }
+
+        .dropdown-header{
+
+        }
+
+        .dropdown-body{
+            .item-row{
+                padding:10px;
+                margin-bottom:1px;
+                position:relative;
+                background-color:rgba(255,255,255,0.8);
+                color:black;
+
+                &:last-child{
+                    margin-bottom:0;
+                }
+            }
+
+            .btns{
+                position:absolute;
+                bottom:5px;
+                left:5px;
+            }
+        }
+
+        .dropdown-footer{
+            .pagination{
+                padding:0;
+                list-style:none;
+                margin:0;
+
+                li{
+                    display:inline-block;
+                    padding: 0 5px;
+                    vertical-align: middle;
+
+                    i{
+                        display:inline-block;
+                        vertical-align: middle;
+                    }
+                }
+
+                button{
+                    padding: 2px;
+                    line-height: 12px;
+                    font-size:10px;
+                    margin-left:5px;
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,409 @@
+@import "mixins";
+@import "variable";
+
+app-schedulingprog{
+
+    @import "layouts";
+    @import "general";
+
+
+    position: relative;
+    font-size: 16px;
+
+    .btnkasra{
+        &.active{
+            border-color:$blue !important;
+            color:$blue !important;
+            background-color:rgba($blue, 0.2) !important;
+        }
+    }
+
+    .fixed{
+        position: absolute;
+        right: 0;
+        height: 100%;
+        z-index: 9;
+        width:$box-width + $handle-width + 2;
+
+        @include clearfix();
+        
+    }
+
+    .scrollable{
+        position: relative;
+        padding-right:$box-width + $handle-width + 2;
+    }
+
+    table.table-layout{
+        border-collapse: collapse;
+        box-sizing:content-box;
+
+        tr{
+            td{
+                vertical-align:middle;
+                /*width:$box-width;
+                height:$box-height;*/
+                border: 1px solid #ccc;
+                white-space: nowrap;
+                border-left:0;
+
+                /*&:last-child{
+                    border-left-width:1px;
+                }*/
+            }
+
+        }
+    }
+
+    .box-wrapper{
+        position:relative;
+        width:$box-width;
+        height:$box-height;
+        /*overflow:hidden;*/
+        @include mk-row();
+    }
+
+    .handle-wrapper{
+        width:$handle-width;
+        height:$box-height;
+        cursor: pointer;
+        background-color: #fbfbfb;
+
+        span{
+            display: block;
+            text-align: center;
+            color: #999;
+        }
+
+        .row-index{
+            color: #333;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .controller-wrapper{
+        width:$box-width + $handle-width;
+        height: $header_height;
+        padding-left:5px;
+
+
+        .table-row{
+            height:$header_height;
+            table-layout: fixed;
+
+            .table-cell{
+                vertical-align:top;
+                text-align:center;
+                padding:0 2px;
+                position:relative;
+               // table-layout: fixed;
+
+                &:first-child{
+                    padding-right:0;
+                }
+            }
+        }
+
+        .search-wrapper{
+            position:relative;
+
+            input{
+                display:block;
+                width:100%;
+                height:20px;
+                font-size:0.74rem;
+                border: 1px solid #dadada;
+                border-radius:3px;
+                padding:0;
+                padding-left: 18px;
+            }
+
+            i{
+                position:absolute;
+                top:calc(50% - 6px);
+                left:5px;
+                font-size:0.7rem;
+                color:#ccc;
+            }
+        }
+
+        .btnkasra{
+            padding:0;
+            min-width:20px;
+            height:20px;
+            display:inline-block;
+            vertical-align: top;
+
+            i{
+                margin:0;
+                display:inline-block;
+                font-size: 0.7rem;
+                line-height: 18px;
+            }
+        }
+    }
+
+    .app-header,
+    .app-body,
+    .app-footer{
+        position: relative;
+    }
+
+    .app-header{
+        //height: $header_height;
+        margin-bottom:3px;
+
+        .fixed{
+            z-index:50;
+            background-color:white;
+        }
+
+        .scrollable{
+            overflow:hidden;
+        }
+
+        table{
+            tr{
+                td{
+                    border-color: transparent;
+                }
+            }
+        }
+
+        .header-cell{
+            .box-wrapper{
+                height:$header_height;
+                background-color:#e6e6e6;
+                text-align: center;
+                border-radius: 5px;
+                line-height:$header_height;
+                display: table-cell;
+            }
+
+            span{
+                display: inline-block;
+                font-size: 0.78rem;
+            }
+
+            a{
+                color:#333;
+                vertical-align: middle;
+                height: 100%;
+                display: table-cell;
+                width: 100%;
+
+                i{
+                    vertical-align:middle;
+                    font-size: 10px;
+                    margin:0 5px;
+                    display:none;
+                }
+
+                &.asc, &.des{
+                    i{
+                        display:inline-block;
+                    }
+                }
+
+                &.asc{
+                    i{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+
+        .header-cell{
+            .holiday{
+                background-color:$holiday-bg-color;
+                color:$holiday-color;
+
+                a{
+                    color:$holiday-color;
+                }
+            }
+        }
+    }
+
+    .app-body{
+        /*overflow-y:auto;*/
+
+        .body-wrapper{
+            position: relative;
+        }
+
+        .body-cell{
+
+            &.selected{
+                background-color:#ffe6bd;
+            }
+
+            &.holiday{
+                border-right-color:$holiday-bg-color;
+            }
+
+            .str-item{
+                margin-bottom:2px;
+
+                &:last-child{
+                    margin:0;
+                }
+            }
+        }
+    }
+
+    .app-footer{
+        box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
+        z-index:99;
+
+        .fixed{
+            height: auto;
+            background-color: #0078de;
+            z-index:999;
+
+            .table-row{
+                table-layout:fixed;
+
+                .second-cell{
+
+                }
+            }
+        }
+
+        .scrollable{
+            overflow:hidden;
+        }
+
+        table{
+            tr{
+                td{
+                    border-color: transparent;
+                }
+            }
+        }
+
+        .footer-top{
+            background-color: #0078de;
+            position:relative;
+            border-top:2px solid #0078de;
+            border-bottom:3px solid #0f5b9c;
+            /*padding: 5px 0;*/
+
+            .controller-wrapper{
+                height:auto;
+                text-align:center;
+                font-size:0.78rem;
+                color:white;
+                line-height:30px;
+            }
+
+            .box-wrapper{
+                height:auto;
+                text-align:center;
+                font-size:0.78rem;
+                /*padding:3px;*/
+                //line-height:30px;
+
+                span{
+                    display:block;
+                    background-color:white;
+                    padding:5px;
+                    border-radius:5px;
+                    line-height: 14px;
+                }
+            }
+
+            .footer-bottom-collapse-btn{
+                display:inline-block;
+                position:absolute;
+                width:30px;
+                height:20px;
+                bottom:0;
+                right:10px;
+                background-color:#0f5b9c;
+                color:white;
+                cursor:pointer;
+                line-height: 25px;
+                height: 23px;
+                border-radius: 3px 3px 0 0;
+
+                span{
+                    color:white;
+                    display:inline-block;
+                    vertical-align:middle;
+                }
+            }
+        }
+
+        .footer-bottom{
+            background-color:#0f5b9c;
+            padding: 10px;
+            overflow-y: auto;
+            white-space: nowrap;
+            display:block;
+
+            &.collapsed{
+                display:none;
+            }
+        }
+    }
+
+    .monthly{
+        .app-header{
+            .scrollable{
+                .header-cell{
+
+                    .box-wrapper{
+                        width:$monthly-day-box-width;
+                        display: table;
+                    }
+
+                    .day_num, .day_title{
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+
+                    .day_num{
+                        font-size: 18px;
+                        line-height: 16px;
+                    }
+                }
+            }
+        }
+
+        .app-body{
+            .scrollable{
+                .body-cell{
+
+                    .box-wrapper{
+                        width:$monthly-day-box-width;
+                    }
+                }
+            }
+        }
+
+        .app-footer{
+            .footer-cell{
+                .box-wrapper{
+                    width:$monthly-day-box-width;
+                    background-color:white;
+                    height:16px;
+                    line-height: 16px;
+                }
+            }
+
+            .fixed{
+                .second-cell{
+                    width:$monthly-day-box-width;
+                }
+
+                .footer-cell{
+                    .box-wrapper{
+                        background-color:transparent;
+                    }
+                }
+            }
+        }
+    }
+}

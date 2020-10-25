@@ -1,0 +1,144 @@
+﻿@using Lego.Tools.HtmlHelperClass
+@using Lego.Tools.HtmlHelperClass.Grid
+@using Kendo.Mvc.UI
+@{
+    Layout = null;
+}
+
+<script src="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/scripts/SchedulingProgManagement/SchedulingProgManagement_show.js"></script>
+
+<script>
+    var SchedulingProgManagement_show = SchedulingProgManagement_show || {};
+    SchedulingProgManagement_show.SchedulingProgModalTitle = '@LegoTranslateView.T("برنامه زمانبندی")';
+    SchedulingProgManagement_show.workFlowModalTitle = '@LegoTranslateView.T("نمایش روند")';
+</script>
+
+
+<div id="toolbar">
+    <a class="btnkasra btn-default" onclick="SchedulingProgManagement_show.preview_onClick()"><span>@LegoTranslateView.T("مشاهده")</span></a>
+</div>
+
+<div class="filter-bar">
+    <div class="filter-bar-content">
+        <div class="kasra-form-control kasra-col-md-25 kasra-col-lg-25 kasra-col-xs-25">
+            <div class="kasra-lable kasra-col-xs-20 kasra-col-md-20 kasra-col-lg-20">
+                <span>@LegoTranslateView.T("دوره")</span>
+            </div>
+            <div class="kasra-form kasra-form-combo k-rtl kasra-col-md-80 kasra-col-lg-80 kasra-col-xs-80">
+                @(Html.Kendo().DropDownList()
+                    .Name("replaceShiftWP_DDL")
+                    .DataTextField("Title")
+                    .DataValueField("Val")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Url(@String.Format(Request.ApplicationPath) + "/api/Lego/LComboAPI/GetData?LookupType=1&LookupName=ReplaceShiftWP&LookupParam=93");
+                        }).ServerFiltering(false);
+                    })
+                    .Events(e =>
+                    {
+                        e.Select("SchedulingProgManagement_show.replaceShiftWP_DDL_onselect");
+                    })
+                    .HtmlAttributes(new { style = "width: 100%" })
+                )
+            </div>
+        </div>
+
+        <div class="kasra-form-control kasra-col-md-25 kasra-col-lg-25 kasra-col-xs-25">
+            <div class="kasra-lable kasra-col-xs-30 kasra-col-md-30 kasra-col-lg-30">
+                <span>@LegoTranslateView.T("واحد سازمانی")</span>
+            </div>
+            <div class="kasra-form kasra-form-combo k-rtl kasra-col-md-70 kasra-col-lg-70 kasra-col-xs-70">
+                @(Html.Kendo().MultiSelect()
+                    .Name("DepartmentAutoComplete")
+                    .DataTextField("Name")
+                    .Filter("contains")
+                    .MaxSelectedItems(1)
+                    .MinLength(1)
+                    .HtmlAttributes(new { style = "width:100%" })
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Url(@String.Format(Request.ApplicationPath) + "/api/Lego/DepartmentAPI/LoadDepartmentData")
+                                .Data("SchedulingProgManagement_show.onAdditionalDataDepartmentAutoComplete");
+                        }).ServerFiltering(true);
+                    })
+                    .Events(e => e
+                        .Select("SchedulingProgManagement_show.autocompleteDepartment_select")
+                        .Change("SchedulingProgManagement_show.autocompleteDepartment_change")
+                    )
+                )
+            </div>
+        </div>
+
+        <div class="kasra-form-control kasra-col-md-25 kasra-col-lg-25 kasra-col-xs-25">
+            <div class="kasra-lable kasra-col-xs-30 kasra-col-md-30 kasra-col-lg-30">
+                <span>@LegoTranslateView.T("وضعیت برنامه")</span>
+            </div>
+            <div class="kasra-form kasra-form-combo k-rtl kasra-col-md-70 kasra-col-lg-70 kasra-col-xs-70">
+                @(Html.Kendo().DropDownList()
+                    .Name("replaceShiftStatus_DDL")
+                    .DataTextField("Title")
+                    .DataValueField("Val")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Url(@String.Format(Request.ApplicationPath) + "/api/Lego/LComboAPI/GetData?LookupType=1&LookupName=ReplaceShiftStatus&LookupParam=93");
+                        }).ServerFiltering(false);
+                    })
+                    .Events(e =>
+                    {
+                        e.Select("SchedulingProgManagement_show.replaceShiftStatus_DDL_onselect");
+                    })
+                    .HtmlAttributes(new { style = "width: 100%" })
+                )
+            </div>
+        </div>
+
+        <div class="kasra-col-xs-25 kasra-col-md-25 kasra-col-lg-25" style="padding: 0 15px;">
+            <a class="btnkasra btn-filter" onclick="SchedulingProgManagement_show.onFilterBtn()"><i class="icon-filter"></i><span>@LegoTranslateView.T("فیلتر")</span></a>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="k-rtl">
+        @(Html.LegoGrid<Lego.Module.HISDomain.ViewModel.SchedulingProgManagementViewModel>("SchedulingProgManagementGrid")
+            .Columns(columns =>
+            {
+                columns.Select().HeaderHtmlAttributes(new { style = "text-align:center;" }).Width(20);
+                columns.Bound(c => c.DeptName).Width(150).Title(@LegoTranslateView.T("واحد سازمانی"));
+                columns.Bound(c => c.Status).Width(100).Title(@LegoTranslateView.T("وضعیت برنامه")).ClientTemplate("<span onclick=\"SchedulingProgManagement_show.OnClickDisplayFlow(#=PackID#)\" class=\"#=StatusStyle#\" style=\"cursor:pointer;\">#=Status#</span>");
+                columns.Bound(c => c.PersonCount).Width(30).Title(@LegoTranslateView.T("تعداد پرسنل"));
+                columns.Bound(c => c.OverplusPersCount).Width(30).Title(@LegoTranslateView.T("تعداد پرسنل اضافه کار"));
+                columns.Bound(c => c.DepartmentID).Width(350).Title(@LegoTranslateView.T("آيتم هاي منتظر تایید")).ClientTemplate(
+                    "#if(WaiteItemIsOwn != ''){#" +
+                    "   <span class='#=WaiteItemIsOwnStyle#'>#=WaiteItemIsOwn#</span>" +
+                    "# } else if(WaiteItemIsNotOwn != '') { #" +
+                    "   <span class='#=WaiteItemIsNotOwnStyle#'>#=WaiteItemIsNotOwn#</span>" +
+                    "# } else { #" +
+                    "   <span></span>" +
+                    "# } #"
+                );
+            })
+            .ColumnMenu(c => c.Enabled(false))
+            .PersistSelection()
+            .Selectable(c => c.Enabled(true))
+            .AutoBind(false)
+            .DataSource(dataSource => dataSource
+                .Ajax()
+
+                .Model(model =>
+                {
+                    model.Id(m => m.DepartmentID);
+                })
+
+                .Read(read => read.Action("ReadGrid", "SchedulingProgManagement").Data("SchedulingProgManagement_show.GetFilterData"))
+                .PageSize(10)
+            )
+        )
+    </div>
+</div>

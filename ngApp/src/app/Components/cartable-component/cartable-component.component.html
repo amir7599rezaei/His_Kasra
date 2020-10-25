@@ -1,0 +1,138 @@
+<div *ngIf="service.Permisions.cartable" class="dropdown cartable-dropdown-wrapper" name="cartable-component">
+  <button (click)="showCartableBox()" class="btnkasra btn-custom1 btn-lg dropdown-toggle" name="cartable-component">
+    <i class="icon-show-credit" name="cartable-component"></i>
+    <span class="mr-3 ml-3" name="cartable-component">{{service.listCartable.length}}</span>
+  </button>
+  <div [ngClass]="{'show':service.showCartableBox}" class="dropdown-menu menu-custom1 show" style="min-width:430px;"
+    name="cartable-component">
+
+    <div class="dropdown-header clearfix pt-3 pr-3 pb-3 pl-3" name="cartable-component">
+      <div class="title float-left" name="cartable-component">
+        <i class="icon-filter fs-10 mr-5 ml-5" name="cartable-component"></i>
+        <span name="cartable-component">فیلتر</span>
+      </div>
+      <div class="toggle-collapse-btn float-right" (click)="showFilterBoxFn()" [style.transform]="'rotate(' + (showFilterBox ? -180 : 0) + 'deg)'"
+        style="cursor: pointer;" name="cartable-component">
+        <i class="icon-up fs-10" name="cartable-component"></i>
+      </div>
+    </div>
+
+    <!-- Filter Box -->
+    <div class="filter-wrapper pt-3 pr-3 pb-5 pl-3 clearfix" [ngClass]="{'hidden': !showFilterBox}" name="cartable-component">
+      <ng-container name="cartable-component">
+
+        <!-- Person -->
+        <div class="kasra-form-control kasra-col-md-50" name="cartable-component">
+          <fieldset class="kasra-form-fieldset Kasra-filedset-Collapse bc-white pl-5 pb-5 pr-5" name="cartable-component">
+            <legend class="fs-10" name="cartable-component">پرسنل</legend>
+            <div class="kasra-form-control kasra-col-md-100" name="cartable-component">
+              <div class="kasra-form kasra-form-textbox kasra-col-md-100" name="cartable-component">
+                <kendo-autocomplete [data]="this.service.listPersonData" [valueField]="'Name'" [placeholder]="'پرسنل'"
+                  class="countries" [filterable]="true" (valueChange)="valueChange($event)" (filterChange)="filterChange($event)"
+                  [popupSettings]="{appendTo:'component'}" style="width: 100%;color: black !important;">
+                </kendo-autocomplete>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Document Type -->
+        <div class="kasra-form-control kasra-col-md-50" name="cartable-component">
+          <fieldset class="kasra-form-fieldset Kasra-filedset-Collapse bc-white pl-5 pb-5 pr-5" name="cartable-component">
+            <legend class="fs-10" name="cartable-component">نوع سند</legend>
+            <div class="kasra-form-control kasra-col-md-100" name="cartable-component">
+              <div class="kasra-form kasra-form-combo kasra-col-md-100" name="cartable-component">
+                <select [(ngModel)]="service.cartableVariable.documentType" name="cartable-component" id="documentType_LComboListData"
+                  style="width: 100%;">
+                  <option *ngFor="let item of this.service.documentType_LComboListData" [value]="item.val" name="cartable-component">{{item.Title}}</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Start Date -->
+        <div class="kasra-form-control kasra-col-md-50" name="cartable-component">
+          <fieldset class="kasra-form-fieldset Kasra-filedset-Collapse bc-white pl-5 pb-5 pr-5" name="cartable-component">
+            <legend class="fs-10" name="cartable-component">از تاریخ</legend>
+            <div class="kasra-form-control kasra-col-md-100" name="cartable-component">
+              <div class="kasra-form kasra-form-textbox kasra-col-md-100" name="cartable-component">
+                <dp-date-picker dir="rtl" [(ngModel)]="service.cartableVariable.startDate" mode="day" placeholder="تاریخ"
+                  theme="dp-material" style="width: 100%">
+                </dp-date-picker>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- End Date -->
+        <div class="kasra-form-control kasra-col-md-50" name="cartable-component">
+          <fieldset class="kasra-form-fieldset Kasra-filedset-Collapse bc-white pl-5 pb-5 pr-5" name="cartable-component">
+            <legend class="fs-10" name="cartable-component">تا تاریخ</legend>
+            <div class="kasra-form-control kasra-col-md-100" name="cartable-component">
+              <div class="kasra-form kasra-form-textbox kasra-col-md-100" name="cartable-component">
+                <!-- <input type="text"> -->
+                <dp-date-picker dir="rtl" [(ngModel)]="service.cartableVariable.endDate" mode="day" placeholder="تاریخ"
+                  theme="dp-material" style="width: 100%">
+                </dp-date-picker>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div (click)="filterCartableList()" class="kasra-form-control kasra-col-md-100" name="cartable-component">
+            <button style="margin-top:5px" class="btnkasra btn-white fs-10" name="cartable-component">فیلتر</button>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Information Box -->
+    <div class="dropdown-body clearfix" name="cartable-component">
+      <ng-container *ngIf="service.listCartable.length != 0; then thenShowCartableTemplate; else elseTemplate"></ng-container>
+      <ng-template #thenShowCartableTemplate>
+        <ng-container *ngFor="let item of service.listCartable; let i=index">
+          <div *ngIf="(i >= service.paginateCartable.paginate*(service.paginateCartable.limit)) && (i < (service.paginateCartable.paginate + 1)*(service.paginateCartable.limit))"
+            class="item-row pt-10 pr-10 pb-10 pl-10" name="cartable-component">
+            <h4 class="mt-5 mb-5" name="cartable-component">
+              <span name="cartable-component">{{item.DocTypeName}}</span>
+              <span class="mr-10 ml-10 fs-10 cl-grey" name="cartable-component">{{item.ActorName}} - تاریخ :
+                {{item.SDate}}</span>
+            </h4>
+            <p class="mt-0 mb-5" name="cartable-component">{{item.Description}}</p>
+            <div (click)="openModalWorkFlow(item)" style="left: 55px;" class="btns" name="cartable-component">
+              <button class="btnkasra btn-custom1 fs-10" name="cartable-component">
+                <i class="icon-up-and-down-arrows fs-10" name="cartable-component"></i>
+              </button>
+            </div>
+            <div class="btns" name="cartable-component">
+              <button (click)="cancelCartableItem(item)" class="btnkasra btn-custom1 fs-10" name="cartable-component">عدم تایید</button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+      <ng-template #elseTemplate name="cartable-component">
+        {{service.Dictionary.error.noMessage}}
+      </ng-template>
+    </div>
+
+    <!-- Footer -->
+    <div class="dropdown-footer clearfix pt-5 pb-5 pr-5 pl-5" name="cartable-component">
+      <button (click)="showCartableChangesOnClick(true)" class="btnkasra btn-white fs-10" name="cartable-component">مشاهده تغییرات فیلتر</button>
+      <button (click)="showCartableChangesOnClick(false)" class="btnkasra btn-white fs-10" name="cartable-component">مشاهده همه
+        تغییرات</button>
+      <button (click)="confirmAll()" class="btnkasra btn-white solid fs-10" name="cartable-component">تایید همه</button>
+      <button (click)="cancelAll()" class="btnkasra btn-white solid fs-10" name="cartable-component">رد همه</button>
+
+      <ul *ngIf="service.listCartable.length != 0" class="pagination inline-block fs-10">
+        <li (click)="goPrevPage()" style="cursor: pointer;" name="cartable-component"><i class="icon-right" name="cartable-component"></i></li>
+        <li name="cartable-component">
+          {{ service.Dictionary.messageComponent.page }}
+          {{service.paginateCartable.paginate + 1}}
+          {{service.Dictionary.messageComponent.from}}
+          {{service.paginateCartable.total}}
+        </li>
+        <li (click)="goNextPage()" style="cursor: pointer;" name="cartable-component"><i class="icon-left" name="cartable-component"></i></li>
+      </ul>
+    </div>
+  </div>
+</div>

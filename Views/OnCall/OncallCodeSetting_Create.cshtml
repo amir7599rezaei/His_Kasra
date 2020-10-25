@@ -1,0 +1,95 @@
+﻿@using Lego.Tools.HtmlHelperClass
+@using Kendo.Mvc.UI
+@using Lego.Module.HISDomain.ViewModel
+
+@model Lego.Module.HISDomain.ViewModel.OnCallViewModel
+@{
+    Layout = null;
+}
+
+
+<script src="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/scripts/OnCall/oncall.js" type="text/javascript"></script>
+
+<script>
+    var OnCall_create = OnCall_create || {};
+    OnCall_create.CategoryStructureID = '@Model.CategoryStructureID';
+    OnCall_create.CategoryStructureTitle = '@Model.CategoryStructureTitle';
+
+    OnCall_create.MesageSTime = '@LegoTranslateView.T("ساعت شروع مورد نظر را مشخص کنید ")';
+    OnCall_create.MessageETime = '@LegoTranslateView.T("ساعت پایان مورد نظر را مشخص کنید ")';
+
+</script>
+
+<div class="main-content">
+
+    <div class="kasra-form-control kasra-col-md-50 kasra-col-lg-50 kasra-col-xs-50">
+        <div class="kasra-lable kasra-col-xs-20 kasra-col-md-20 kasra-col-lg-20">
+            <span>@LegoTranslateView.T("ساختار")</span><span class="kasra-important-text">*</span>
+        </div>
+        <div class="kasra-form kasra-form-textbox kasra-col-md-80 kasra-col-lg-80 kasra-col-xs-80">
+            @Html.TextBox("CategoryStructureTitle", Model.CategoryStructureTitle, new {disabled="disabled"})
+        </div>
+    </div>
+    
+
+    <fieldset class="kasra-form-control kasra-form-fieldset kasra-col-md-100 kasra-col-lg-100 kasra-col-xs-100">
+        <div id="buttonsDiv" class="kasra-form-control kasra-col-md-100 kasra-col-lg-100 kasra-col-xs-100">
+            <ul style="list-style: none;">
+                @* @foreach (var x in Model.OncallCodeSettingList )
+                    {
+                        <li>@x</li>}
+                *@
+
+                @if (ViewData["OncallCodeSettingList"] != null)
+                {
+
+                    List<OncallCodeSettingViewModel> buttonList = (List<OncallCodeSettingViewModel>)ViewData["OncallCodeSettingList"];
+                    foreach (var item in buttonList)
+                    {
+                        <li>
+                            <a id=@item.Id class='btnkasra  btn-primary' onclick="OnCall_create.onSelectOncallCodeSetting(this)" data-assigned-id="@item.Id"  data-assigned-acronym="@item.Acronym"><span><i></i>@LegoTranslateView.T(item.Title)</span></a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <fieldset class="kasra-form-control kasra-form-fieldset kasra-col-md-100 kasra-col-lg-100 kasra-col-xs-100">
+            <legend class="kasta-label">@LegoTranslateView.T("جدید")</legend>
+            <div class="kasra-form-control kasra-col-md-50 kasra-col-lg-50 kasra-col-xs-50">
+                <div class="kasra-lable kasra-col-xs-30 kasra-col-md-30 kasra-col-lg-30">
+                    <span>@LegoTranslateView.T("از ساعت")</span><span class="kasra-important-text">*</span>
+                </div>
+                <div class="kasra-form kasra-form-textbox kasra-col-md-70 kasra-col-lg-70 kasra-col-xs-70">
+                    @Html.LegoClockPicker("STime")
+                </div>
+            </div>
+            <div class="kasra-form-control kasra-col-md-50 kasra-col-lg-50 kasra-col-xs-50">
+                <div class="kasra-lable kasra-col-xs-30 kasra-col-md-30 kasra-col-lg-30">
+                    <span>@LegoTranslateView.T("تا ساعت")</span>
+                </div>
+                <div class="kasra-form kasra-form-textbox kasra-col-md-70 kasra-col-lg-70 kasra-col-xs-70">
+                    @Html.LegoClockPicker("ETime")
+                </div>
+            </div>
+            <div class="kasra-form-control kasra-col-md-100 kasra-col-lg-100 kasra-col-xs-100">
+                <div class="kasra-lable kasra-col-xs-10 kasra-col-md-10 kasra-col-lg-10">
+                    <span>@LegoTranslateView.T("شرح")</span>
+                </div>
+                <div class="kasra-form kasra-form-textarea kasra-col-md-90 kasra-col-lg-90 kasra-col-xs-90">
+                    @Html.TextArea("Description", "")
+
+                </div>
+            </div>
+        </fieldset>
+
+
+    </fieldset>
+</div>
+<div class="toolbar">
+    <div class="BtnGroup ">
+        <a id='BtnSave' class='btnkasra  btn-primary' onclick='OnCall_create.onSave()'><span><i class='floatdiv'></i>@LegoTranslateView.T("ذخیره")</span></a>
+    </div>
+</div>
+
+

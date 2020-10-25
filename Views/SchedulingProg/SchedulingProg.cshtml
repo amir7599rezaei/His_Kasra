@@ -1,0 +1,115 @@
+﻿@using Lego.Tools.HtmlHelperClass
+@using Lego.Tools.Extensions
+@using Newtonsoft.Json;
+
+@{
+    Layout = null;
+
+    /* InitParams ///////////////////////////////////////////////////////////////// */
+    var initParams = new
+    {
+        OnlineUserId = ViewData["OnlienUserId"],
+        SystemId = 93,
+        MenuItemId = 93002,
+        //DepartmentID = 540,
+        //DepartmentName = "حوزه مديريت مجتمع مس سرچشمه",
+        DepartmentID = 612,
+        DepartmentName = "آمار و اطلاعات",
+        WPID = 70,
+        //DepartmentID = ViewData["DepartmentID"],
+        //DepartmentName = ViewData["DepartmentName"],
+        //WPID = ViewData["WPID"],
+        Version = 0,
+
+        apiUrl = new {
+            lego = @String.Format(Request.ApplicationPath) + "/api/Lego/",
+            his = @String.Format(Request.ApplicationPath) + "/api/HIS/"
+        }
+    };
+
+    /* Permisions ///////////////////////////////////////////////////////////////// */
+    var permisions = new
+    {
+        cartable = User.HasPermission("LegoCartable")
+    };
+
+    /* Dictionary //////////////////////////////////////////////////////////////// */
+    var dictionary = new
+    {
+        Credit = new
+        {
+            HourlyCredit = @LegoTranslateView.T("مجوز ساعتی"),
+            DailyCredit = @LegoTranslateView.T("مجوز روزانه"),
+            ExitDeptHistoryDate = @LegoTranslateView.T("جابجایی"),
+            ExitDate = @LegoTranslateView.T("ترک کار")
+        },
+
+        error = new
+        {
+            person = @LegoTranslateView.T("کاربر"),
+            errorType = @LegoTranslateView.T("نوع خطا"),
+            noMessage = @LegoTranslateView.T("پیغامی جهت نمایش وجود ندارد")
+        },
+
+        button = new
+        {
+            save = @LegoTranslateView.T("ذخیره"),
+            filter = @LegoTranslateView.T("فیلتر"),
+            departmentUnitName = @LegoTranslateView.T("واحد سازمانی")
+        },
+
+        sort = new
+        {
+            sort = @LegoTranslateView.T("مرتب سازی"),
+            sortItems = @LegoTranslateView.T("مرتب سازی بر اساس"),
+            sortTypes = @LegoTranslateView.T("نحوه مرتب سازی"),
+            asc = @LegoTranslateView.T("صعودی"),
+            desc = @LegoTranslateView.T("نزولی")
+        },
+
+        messageComponent = new
+        {
+            page = @LegoTranslateView.T("صفحه"),
+            from = @LegoTranslateView.T("از"),
+            date = @LegoTranslateView.T("تاریخ")
+        },
+
+        addMessageComponent = new
+        {
+            addMessage = @LegoTranslateView.T("افزودن یادداشت"),
+            chooseCode = @LegoTranslateView.T("انتخاب آیتم"),
+            name = @LegoTranslateView.T("نام"),
+            day = @LegoTranslateView.T("روز"),
+            description = @LegoTranslateView.T("توضیحات")
+        },
+
+        confirmComponent = new
+        {
+            yes = @LegoTranslateView.T("بله"),
+            no = @LegoTranslateView.T("خیر"),
+            deleteTitle = @LegoTranslateView.T("حذف پیام"),
+            deleteMessage = @LegoTranslateView.T("آیا برای حذف مطمئن هستید؟")
+        }
+    };
+}
+
+<link href="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/Content/style/SchedulingProg/kendo-theme-default/multiselect.css" rel="stylesheet" />
+<link href="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/Content/style/SchedulingProg/kendo-theme-default/autocomplete.css" rel="stylesheet" />
+<link href="~/Content/client-icon/style.css" rel="stylesheet" />
+
+<link href="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/Content/style/SchedulingProg/style.css" rel="stylesheet" />
+
+<script>delete window.webpackJsonp</script>
+
+<app-schedulingprog 
+    Dictionary="@JsonConvert.SerializeObject(dictionary)" 
+    Permisions="@JsonConvert.SerializeObject(permisions)" 
+    InputParams="@JsonConvert.SerializeObject(initParams)">
+</app-schedulingprog>
+
+<script src="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/scripts/SchedulingProg.js" type="text/javascript"></script>
+
+@*<script type="text/javascript" src="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/ngAppDist/runtime.js"></script>*@
+@*<script type="text/javascript" src="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/ngAppDist/polyfills.js"></script>*@
+<script type="text/javascript" src="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/ngAppDist/vendor.js"></script>
+@*<script type="text/javascript" src="~/Areas/Lego.Module.HIS/Lego.Module.HISWeb/ngAppDist/main.js"></script>*@

@@ -1,0 +1,41 @@
+.controller-wrapper{
+    .ctrl-dropdown-wrapper{
+        position:absolute;
+        z-index:99;
+        right: 0;
+        left: 0;
+        top: 25px;
+        min-height:200px;
+        color: #6b6b6b;
+        background-color: #eaeaea;
+        border: 1px solid #bbbbbb;
+        padding:10px;
+        border-radius:8px;
+        overflow:hidden;
+        display:none;   
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+
+        .checkbox,
+        .radioButton{
+            label{
+                font-size: 12px;
+            }
+        }
+
+        fieldset{
+            legend{
+                font-size: 12px;
+            }
+        }
+
+        .btnkasra{
+            padding:0 5px !important;
+            background-color:#d1d1d1;
+            border-color: #bbbbbb;
+        }
+
+        &.show{
+            display:block;
+        }
+    }
+}

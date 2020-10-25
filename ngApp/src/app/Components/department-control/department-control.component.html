@@ -1,0 +1,17 @@
+<div class="k-rtl display-inline-block" style="position: relative;">
+  <kendo-multiselect
+      #list
+      [data]="this.service.multiselectDepartmentList"
+      [placeholder]="'واحد سازمانی'"
+      [filterable]="true"
+      class="departmentList"
+      [textField]="'Name'"      
+      [valueField]="'Code'"
+      [loading]="false"
+      (filterChange)="filterChange($event)"
+      (valueChange)="valueChange($event)"
+      [popupSettings]="{appendTo:'component'}"
+      [(ngModel)]="this.service.multiselectDepartmentModel"
+      style="width:300px;"
+  ></kendo-multiselect>
+</div>

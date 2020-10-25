@@ -1,0 +1,1096 @@
+/*merge*/
+/* colors /////////////////////////////////////// */
+app-schedulingprog {
+    /*
+* Scrollbar thumb styles
+
+
+  position: relative;
+  font-size: 16px; }
+  app-schedulingprog .ps {
+    overflow: hidden !important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto; }
+  app-schedulingprog .ps__rail-x {
+    display: none;
+    opacity: 0;
+    transition: background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    height: 15px;
+    /* there must be 'bottom' or 'top' for ps__rail-x */
+    /*bottom: 0px;*/
+    /* please don't change 'position' */
+    /*position: absolute;*/
+}
+  app-schedulingprog .ps__rail-y {
+    display: none;
+    opacity: 0;
+    transition: background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    width: 15px;
+    /* there must be 'right' or 'left' for ps__rail-y */
+    right: 0;
+    /* please don't change 'position' */
+    position: absolute; }
+  app-schedulingprog .ps--active-x > .ps__rail-x,
+  app-schedulingprog .ps--active-y > .ps__rail-y {
+    display: block;
+    background-color: transparent;
+    z-index: 99; }
+  app-schedulingprog .ps:hover > .ps__rail-x,
+  app-schedulingprog .ps:hover > .ps__rail-y,
+  app-schedulingprog .ps--focus > .ps__rail-x,
+  app-schedulingprog .ps--focus > .ps__rail-y,
+  app-schedulingprog .ps--scrolling-x > .ps__rail-x,
+  app-schedulingprog .ps--scrolling-y > .ps__rail-y {
+    opacity: 0.6; }
+  app-schedulingprog .ps .ps__rail-x:hover,
+  app-schedulingprog .ps .ps__rail-y:hover,
+  app-schedulingprog .ps .ps__rail-x:focus,
+  app-schedulingprog .ps .ps__rail-y:focus,
+  app-schedulingprog .ps .ps__rail-x.ps--clicking,
+  app-schedulingprog .ps .ps__rail-y.ps--clicking {
+    background-color: #eee;
+    opacity: 0.9; }
+  app-schedulingprog .ps__thumb-x {
+    background-color: #aaa;
+    border-radius: 6px;
+    transition: background-color .2s linear, height .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+    height: 6px;
+    /* there must be 'bottom' for ps__thumb-x */
+    bottom: 2px;
+    /* please don't change 'position' */
+    position: absolute; }
+  app-schedulingprog .ps__thumb-y {
+    background-color: #aaa;
+    border-radius: 6px;
+    transition: background-color .2s linear, width .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+    width: 6px;
+    /* there must be 'right' for ps__thumb-y */
+    right: 2px;
+    /* please don't change 'position' */
+    position: absolute; }
+  app-schedulingprog .ps__rail-x:hover > .ps__thumb-x,
+  app-schedulingprog .ps__rail-x:focus > .ps__thumb-x,
+  app-schedulingprog .ps__rail-x.ps--clicking .ps__thumb-x {
+    background-color: #999;
+    height: 11px; }
+  app-schedulingprog .ps__rail-y:hover > .ps__thumb-y,
+  app-schedulingprog .ps__rail-y:focus > .ps__thumb-y,
+  app-schedulingprog .ps__rail-y.ps--clicking .ps__thumb-y {
+    background-color: #999;
+    width: 11px; }
+  app-schedulingprog .pager-wrapper {
+    margin-bottom: 10px; }
+    app-schedulingprog .pager-wrapper .btnkasra {
+      padding: 0;
+      width: 24px;
+      margin-left: 5px; }
+      app-schedulingprog .pager-wrapper .btnkasra i {
+        margin: 0;
+        padding: 0; }
+      app-schedulingprog .pager-wrapper .btnkasra.active {
+        cursor: default; }
+    app-schedulingprog .pager-wrapper .pager-list-numbers {
+      display: inline-block;
+      margin: 0;
+      list-style: none;
+      padding: 0 8px; }
+      app-schedulingprog .pager-wrapper .pager-list-numbers li {
+        display: inline-block; }
+        app-schedulingprog .pager-wrapper .pager-list-numbers li:last-child {
+          margin: 0; }
+    app-schedulingprog .pager-wrapper .pager-nav i {
+      font-size: 10px; }
+    app-schedulingprog .pager-wrapper .pager-nav.pager-last {
+      letter-spacing: -2px; }
+  app-schedulingprog .tooltip-wrapper {
+    position: absolute;
+    left: 18px;
+    top: -8px;
+    z-index: 99; }
+    app-schedulingprog .tooltip-wrapper .tooltip-body {
+      display: none;
+      z-index: 9999; }
+      app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper {
+        right: 25px;
+        top: 0;
+        position: absolute;
+        background-color: white;
+        border: 1px solid #dadada;
+        color: #333;
+        border-radius: 6px;
+        overflow: hidden; }
+        app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper .tooltip-body-item {
+          padding: 10px;
+          line-height: 14px; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper .tooltip-body-item:after, app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper .tooltip-body-item:before {
+            content: "";
+            display: table; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper .tooltip-body-item:after {
+            clear: both; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper .tooltip-body-item .tooltip-icon {
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: middle; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper .tooltip-body-item span {
+            margin: 0;
+            font-size: 0.74rem; }
+        app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.error {
+          border: 1px solid crimson; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.error .tooltip-body-item {
+            background-color: rgba(220, 20, 60, 0.2);
+            color: crimson; }
+        app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.message {
+          border: 1px solid #ebb000; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.message .tooltip-icon {
+            color: #ebb000; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.message .tooltip-body-item {
+            background-color: #ffc107;
+            color: #333;
+            border-bottom: 1px solid #ebb000; }
+            app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.message .tooltip-body-item.read {
+              background-color: #fff0c4; }
+          app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.message .tooltip-body-item-footer {
+            font-size: 12px;
+            position: relaive; }
+            app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.message .tooltip-body-item-footer .inner-wrapper {
+              display: table;
+              width: 100%;
+              height: 20px; }
+              app-schedulingprog .tooltip-wrapper .tooltip-body .tooltip-body-wrapper.message .tooltip-body-item-footer .inner-wrapper .info {
+                display: table-cell;
+                vertical-align: middle;
+                color: #d6a410;
+                font-size: 11px; }
+    app-schedulingprog .tooltip-wrapper:hover .tooltip-body {
+      display: block; }
+  app-schedulingprog .person-info-wrapper {
+    box-sizing: border-box;
+    background-color: #fbfbfb; }
+    app-schedulingprog .person-info-wrapper .person-item {
+      position: absolute;
+      margin: 0;
+      top: 0;
+      right: 0; }
+      app-schedulingprog .person-info-wrapper .person-item * {
+        margin: 0 auto;
+        padding: 0;
+        vertical-align: middle;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      app-schedulingprog .person-info-wrapper .person-item img {
+        display: inline-block;
+        vertical-align: middle; }
+    app-schedulingprog .person-info-wrapper .str-list-wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #f0f0f0;
+      padding: 2px 0; }
+      app-schedulingprog .person-info-wrapper .str-list-wrapper:after, app-schedulingprog .person-info-wrapper .str-list-wrapper:before {
+        content: "";
+        display: table; }
+      app-schedulingprog .person-info-wrapper .str-list-wrapper:after {
+        clear: both; }
+      app-schedulingprog .person-info-wrapper .str-list-wrapper .str-item {
+        display: inline-block;
+        margin-left: 3px;
+        float: right;
+        max-width: 35px; }
+        app-schedulingprog .person-info-wrapper .str-list-wrapper .str-item:last-child {
+          margin: 0; }
+  app-schedulingprog .controller-wrapper .ctrl-dropdown-wrapper {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    left: 0;
+    top: 25px;
+    min-height: 200px;
+    color: #6b6b6b;
+    background-color: #eaeaea;
+    border: 1px solid #bbbbbb;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); }
+    app-schedulingprog .controller-wrapper .ctrl-dropdown-wrapper .checkbox label,
+    app-schedulingprog .controller-wrapper .ctrl-dropdown-wrapper .radioButton label {
+      font-size: 12px; }
+    app-schedulingprog .controller-wrapper .ctrl-dropdown-wrapper fieldset legend {
+      font-size: 12px; }
+    app-schedulingprog .controller-wrapper .ctrl-dropdown-wrapper .btnkasra {
+      padding: 0 5px !important;
+      background-color: #d1d1d1;
+      border-color: #bbbbbb; }
+    app-schedulingprog .controller-wrapper .ctrl-dropdown-wrapper.show {
+      display: block; }
+  app-schedulingprog app-day-component {
+    position: relative; }
+    app-schedulingprog app-day-component .box-wrapper {
+      position: relative; }
+      app-schedulingprog app-day-component .box-wrapper .str-items-wrapper {
+        position: absolute;
+        padding: 3px;
+        width: 100%;
+        height: 100%;
+        z-index: 5; }
+      app-schedulingprog app-day-component .box-wrapper .credit-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+        background-color: #faf2d8; }
+        app-schedulingprog app-day-component .box-wrapper .credit-wrapper .txt {
+          color: #808080;
+          font-size: 12px;
+          transform: rotate(-90deg);
+          -moz-transform: rotate(-90deg);
+          -ms-transform: rotate(-90deg);
+          -o-transform: rotate(-90deg);
+          filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+          transform-origin: 63px 17px;
+          -webkit-transform-origin: 63px 17px;
+          width: 80px;
+          text-align: center; }
+      app-schedulingprog app-day-component .box-wrapper .message-totip {
+        color: #ebb000;
+        position: absolute;
+        z-index: 999;
+        cursor: pointer; }
+      app-schedulingprog app-day-component .box-wrapper.has-credit .str-items-wrapper {
+        opacity: 0.6; }
+      app-schedulingprog app-day-component .box-wrapper.has-cartable.show-cartable {
+        border: 1px solid #eb6f6f;
+        background-color: rgba(235, 111, 111, 0.2); }
+      app-schedulingprog app-day-component .box-wrapper .cartable-triangle {
+        left: -2px;
+        bottom: -6px;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid #eb6f6f;
+        transform: rotate(-45deg);
+        cursor: pointer; }
+  app-schedulingprog .str-item {
+    position: relative; }
+    app-schedulingprog .str-item.m-str, app-schedulingprog .str-item.M-str, app-schedulingprog .str-item.Mornings-str, app-schedulingprog .str-item.e-str, app-schedulingprog .str-item.E-str, app-schedulingprog .str-item.Evenings-str, app-schedulingprog .str-item.n-str, app-schedulingprog .str-item.N-str, app-schedulingprog .str-item.Night-str {
+      color: white;
+      height: 16px;
+      width: 100%;
+      max-width: 50px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      vertical-align: middle;
+      line-height: 15px;
+      font-size: 12px;
+      padding: 0 3px;
+      position: relative;
+      -webkit-user-select: none;
+      /* Chrome all / Safari all */
+      -moz-user-select: none;
+      /* Firefox all */
+      -ms-user-select: none;
+      /* IE 10+ */
+      user-select: none;
+      /* Likely future */ }
+      app-schedulingprog .str-item.m-str:after, app-schedulingprog .str-item.m-str:before, app-schedulingprog .str-item.M-str:after, app-schedulingprog .str-item.M-str:before, app-schedulingprog .str-item.Mornings-str:after, app-schedulingprog .str-item.Mornings-str:before, app-schedulingprog .str-item.e-str:after, app-schedulingprog .str-item.e-str:before, app-schedulingprog .str-item.E-str:after, app-schedulingprog .str-item.E-str:before, app-schedulingprog .str-item.Evenings-str:after, app-schedulingprog .str-item.Evenings-str:before, app-schedulingprog .str-item.n-str:after, app-schedulingprog .str-item.n-str:before, app-schedulingprog .str-item.N-str:after, app-schedulingprog .str-item.N-str:before, app-schedulingprog .str-item.Night-str:after, app-schedulingprog .str-item.Night-str:before {
+        content: "";
+        display: table; }
+      app-schedulingprog .str-item.m-str:after, app-schedulingprog .str-item.M-str:after, app-schedulingprog .str-item.Mornings-str:after, app-schedulingprog .str-item.e-str:after, app-schedulingprog .str-item.E-str:after, app-schedulingprog .str-item.Evenings-str:after, app-schedulingprog .str-item.n-str:after, app-schedulingprog .str-item.N-str:after, app-schedulingprog .str-item.Night-str:after {
+        clear: both; }
+      app-schedulingprog .str-item.m-str .str-name,
+      app-schedulingprog .str-item.m-str .str-prop,
+      app-schedulingprog .str-item.m-str .str-num, app-schedulingprog .str-item.M-str .str-name,
+      app-schedulingprog .str-item.M-str .str-prop,
+      app-schedulingprog .str-item.M-str .str-num, app-schedulingprog .str-item.Mornings-str .str-name,
+      app-schedulingprog .str-item.Mornings-str .str-prop,
+      app-schedulingprog .str-item.Mornings-str .str-num, app-schedulingprog .str-item.e-str .str-name,
+      app-schedulingprog .str-item.e-str .str-prop,
+      app-schedulingprog .str-item.e-str .str-num, app-schedulingprog .str-item.E-str .str-name,
+      app-schedulingprog .str-item.E-str .str-prop,
+      app-schedulingprog .str-item.E-str .str-num, app-schedulingprog .str-item.Evenings-str .str-name,
+      app-schedulingprog .str-item.Evenings-str .str-prop,
+      app-schedulingprog .str-item.Evenings-str .str-num, app-schedulingprog .str-item.n-str .str-name,
+      app-schedulingprog .str-item.n-str .str-prop,
+      app-schedulingprog .str-item.n-str .str-num, app-schedulingprog .str-item.N-str .str-name,
+      app-schedulingprog .str-item.N-str .str-prop,
+      app-schedulingprog .str-item.N-str .str-num, app-schedulingprog .str-item.Night-str .str-name,
+      app-schedulingprog .str-item.Night-str .str-prop,
+      app-schedulingprog .str-item.Night-str .str-num {
+        display: inline-block; }
+      app-schedulingprog .str-item.m-str .str-num, app-schedulingprog .str-item.M-str .str-num, app-schedulingprog .str-item.Mornings-str .str-num, app-schedulingprog .str-item.e-str .str-num, app-schedulingprog .str-item.E-str .str-num, app-schedulingprog .str-item.Evenings-str .str-num, app-schedulingprog .str-item.n-str .str-num, app-schedulingprog .str-item.N-str .str-num, app-schedulingprog .str-item.Night-str .str-num {
+        position: absolute;
+        left: 2px;
+        font-size: 10px; }
+    app-schedulingprog .str-item .specialItem-icon {
+      float: left;
+      font-size: 10px;
+      line-height: 15px; }
+    app-schedulingprog .str-item .str-close-btn {
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2px;
+      position: absolute;
+      line-height: 7px;
+      padding: 3px;
+      border-radius: 50%;
+      left: 0;
+      cursor: pointer;
+      display: inline-block; }
+    app-schedulingprog .str-item.m-str, app-schedulingprog .str-item.M-str, app-schedulingprog .str-item.Mornings-str {
+      background-color: #4a90e2;
+      border-color: #4a90e2; }
+    app-schedulingprog .str-item.e-str, app-schedulingprog .str-item.E-str, app-schedulingprog .str-item.Evenings-str {
+      background-color: #f5a623;
+      border-color: #f5a623; }
+    app-schedulingprog .str-item.n-str, app-schedulingprog .str-item.N-str, app-schedulingprog .str-item.Night-str {
+      background-color: #7e1f9f;
+      border-color: #7e1f9f; }
+    app-schedulingprog .str-item.other-dept.m-str, app-schedulingprog .str-item.other-dept.M-str, app-schedulingprog .str-item.other-dept.Mornings-str, app-schedulingprog .str-item.other-dept.e-str, app-schedulingprog .str-item.other-dept.E-str, app-schedulingprog .str-item.other-dept.Evenings-str, app-schedulingprog .str-item.other-dept.n-str, app-schedulingprog .str-item.other-dept.N-str, app-schedulingprog .str-item.other-dept.Night-str {
+      background-color: #e7e7e7; }
+    app-schedulingprog .str-item.other-dept.m-str, app-schedulingprog .str-item.other-dept.M-str, app-schedulingprog .str-item.other-dept.Mornings-str {
+      border-color: #4a90e2;
+      color: #4a90e2; }
+    app-schedulingprog .str-item.other-dept.e-str, app-schedulingprog .str-item.other-dept.E-str, app-schedulingprog .str-item.other-dept.Evenings-str {
+      border-color: #f5a623;
+      color: #f5a623; }
+    app-schedulingprog .str-item.other-dept.n-str, app-schedulingprog .str-item.other-dept.N-str, app-schedulingprog .str-item.other-dept.Night-str {
+      border-color: #7e1f9f;
+      color: #7e1f9f; }
+  app-schedulingprog .message-dropdown-wrapper {
+    color: #714826;
+    padding: 0; }
+    app-schedulingprog .message-dropdown-wrapper button {
+      color: #714826 !important; }
+    app-schedulingprog .message-dropdown-wrapper .message-read-num-wrapper {
+      position: relative;
+      display: inline-block; }
+      app-schedulingprog .message-dropdown-wrapper .message-read-num-wrapper .message-read-num {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 13px;
+        height: 13px;
+        display: inline-block;
+        vertical-align: middle;
+        top: -4px;
+        right: -8px;
+        padding: 0;
+        line-height: 15px;
+        background-color: crimson;
+        color: white;
+        font-size: 10px;
+        border-radius: 50%;
+        overflow: hidden; }
+    app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper {
+      padding: 0; }
+      app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item {
+        padding: 10px;
+        color: #714826;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid #ebb000; }
+        app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item:last-child {
+          border: 0; }
+        app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item.read {
+          background-color: rgba(255, 255, 255, 0.6); }
+        app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item .message-item-body {
+          font-size: 12px;
+          margin: 0;
+          margin-bottom: 10px; }
+        app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item .message-item-footer {
+          font-size: 12px;
+          position: relaive; }
+          app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item .message-item-footer .inner-wrapper {
+            display: table;
+            width: 100%;
+            height: 20px; }
+            app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item .message-item-footer .inner-wrapper .info {
+              display: table-cell;
+              vertical-align: middle;
+              color: #d6a410;
+              font-size: 11px; }
+            app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item .message-item-footer .inner-wrapper .remove-btn {
+              vertical-align: middle;
+              display: table-cell;
+              width: 20px;
+              text-align: center;
+              cursor: pointer; }
+              app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .message-item .message-item-footer .inner-wrapper .remove-btn i {
+                display: inline-block;
+                vertical-align: middle; }
+      app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .dropdown-footer {
+        padding: 5px 0; }
+        app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .dropdown-footer ul {
+          display: block;
+          text-align: center;
+          margin: 0;
+          padding: 0; }
+          app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .dropdown-footer ul li {
+            display: inline-block;
+            padding: 0 5px;
+            vertical-align: middle;
+            border: 0; }
+            app-schedulingprog .message-dropdown-wrapper .dropdown-wrapper .dropdown-footer ul li i {
+              display: inline-block;
+              vertical-align: middle; }
+  app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu {
+    padding: 0; }
+    app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .kasra-form-control {
+      margin: 0; }
+    app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .dropdown-body .item-row {
+      padding: 10px;
+      margin-bottom: 1px;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: black; }
+      app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .dropdown-body .item-row:last-child {
+        margin-bottom: 0; }
+    app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .dropdown-body .btns {
+      position: absolute;
+      bottom: 5px;
+      left: 5px; }
+    app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .dropdown-footer .pagination {
+      padding: 0;
+      list-style: none;
+      margin: 0; }
+      app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .dropdown-footer .pagination li {
+        display: inline-block;
+        padding: 0 5px;
+        vertical-align: middle; }
+        app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .dropdown-footer .pagination li i {
+          display: inline-block;
+          vertical-align: middle; }
+      app-schedulingprog .cartable-dropdown-wrapper .dropdown-menu .dropdown-footer .pagination button {
+        padding: 2px;
+        line-height: 12px;
+        font-size: 10px;
+        margin-left: 5px; }
+  app-schedulingprog .add-message-modal-wrapper {
+    color: #714826;
+    padding: 0; }
+    app-schedulingprog .add-message-modal-wrapper button {
+      color: #714826 !important; }
+    app-schedulingprog .add-message-modal-wrapper .modal-wrapper {
+      padding: 0; }
+      app-schedulingprog .add-message-modal-wrapper .modal-wrapper .modal-message-item {
+        padding: 10px;
+        color: #714826;
+        background-color: rgba(255, 255, 255, 0.3); }
+        app-schedulingprog .add-message-modal-wrapper .modal-wrapper .modal-message-item:last-child {
+          border: 0; }
+        app-schedulingprog .add-message-modal-wrapper .modal-wrapper .modal-message-item.read {
+          background-color: rgba(255, 255, 255, 0.6); }
+        app-schedulingprog .add-message-modal-wrapper .modal-wrapper .modal-message-item .add-message-item-body {
+          font-size: 12px;
+          margin: 0;
+          margin-bottom: 10px; }
+        app-schedulingprog .add-message-modal-wrapper .modal-wrapper .modal-message-item .input-wrapper {
+          border-radius: 5px;
+          border: 1px solid #bbbbbb;
+          width: 98%;
+          margin: 4px;
+          padding: 10px; }
+  app-schedulingprog ng-dialog {
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    min-width: 200px;
+    min-height: 200px;
+    width: calc(100% - 40px);
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    margin: auto;
+    background-color: white;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    overflow: hidden; }
+    app-schedulingprog ng-dialog .ng-dialog-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 999;
+      background-color: rgba(52, 61, 68, 0.6); }
+    app-schedulingprog ng-dialog .dialog-body {
+      padding: 10px; }
+    app-schedulingprog ng-dialog .dialog-header {
+      padding: 10px; }
+      app-schedulingprog ng-dialog .dialog-header .dialog-close {
+        float: left;
+        line-height: 10px;
+        cursor: pointer; }
+  app-schedulingprog .table-row {
+    display: table;
+    width: 100%; }
+    app-schedulingprog .table-row .table-cell {
+      display: table-cell; }
+  app-schedulingprog .align-center {
+    text-align: center; }
+  app-schedulingprog .hide {
+    display: none; }
+  app-schedulingprog dp-date-picker.dp-material .dp-picker-input {
+    color: black;
+    width: 100%;
+    height: 25px;
+    font-size: 12px;
+    padding: 0px 2px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px; }
+  app-schedulingprog .dp-popup {
+    color: black; }
+  app-schedulingprog .k-autocomplete, app-schedulingprog .k-multiselect {
+    height: 25px; }
+  app-schedulingprog .k-multiselect .k-multiselect-wrap .k-button {
+    height: 21px;
+    min-height: 21px; }
+  app-schedulingprog .k-multiselect .k-multiselect-wrap .k-i-close {
+    top: 0 !important; }
+  app-schedulingprog .k-autocomplete.k-header {
+    background-color: white;
+    background-image: none;
+    border: 1px solid #ccc;
+    color: #333; }
+  app-schedulingprog .k-autocomplete .k-input {
+    color: #333;
+    font-size: 12px !important; }
+  app-schedulingprog .toolbar .filterbar .kasra-form-control {
+    margin-bottom: 0;
+    margin-left: 5px; }
+    app-schedulingprog .toolbar .filterbar .kasra-form-control .k-autocomplete, app-schedulingprog .toolbar .filterbar .kasra-form-control .k-multiselect {
+      border: 1px solid #4a90e2 !important;
+      border-radius: 5px !important;
+      color: #656565 !important;
+      background-color: white !important; }
+    app-schedulingprog .toolbar .filterbar .kasra-form-control select {
+      border: 1px solid #4a90e2 !important;
+      vertical-align: middle; }
+  app-schedulingprog .btnkasra {
+    margin-left: 5px;
+    position: relative; }
+    app-schedulingprog .btnkasra.str-btn {
+      min-width: 60px;
+      text-align: right; }
+      app-schedulingprog .btnkasra.str-btn.m-str, app-schedulingprog .btnkasra.str-btn.M-str, app-schedulingprog .btnkasra.str-btn.Mornings-str {
+        color: white;
+        background-color: #4a90e2;
+        border-color: #4a90e2; }
+        app-schedulingprog .btnkasra.str-btn.m-str:focus, app-schedulingprog .btnkasra.str-btn.m-str.focus, app-schedulingprog .btnkasra.str-btn.M-str:focus, app-schedulingprog .btnkasra.str-btn.M-str.focus, app-schedulingprog .btnkasra.str-btn.Mornings-str:focus, app-schedulingprog .btnkasra.str-btn.Mornings-str.focus {
+          color: white;
+          background-color: #2275d7;
+          border-color: #185195; }
+        app-schedulingprog .btnkasra.str-btn.m-str:hover, app-schedulingprog .btnkasra.str-btn.M-str:hover, app-schedulingprog .btnkasra.str-btn.Mornings-str:hover {
+          color: white;
+          background-color: #2275d7;
+          border-color: #2171ce; }
+        app-schedulingprog .btnkasra.str-btn.m-str:active, app-schedulingprog .btnkasra.str-btn.m-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.m-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.M-str:active, app-schedulingprog .btnkasra.str-btn.M-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.M-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.Mornings-str:active, app-schedulingprog .btnkasra.str-btn.Mornings-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.Mornings-str.dropdown-toggle {
+          color: white;
+          background-color: #2275d7;
+          border-color: #2171ce; }
+          app-schedulingprog .btnkasra.str-btn.m-str:active:hover, app-schedulingprog .btnkasra.str-btn.m-str:active:focus, app-schedulingprog .btnkasra.str-btn.m-str:active.focus, app-schedulingprog .btnkasra.str-btn.m-str.active:hover, app-schedulingprog .btnkasra.str-btn.m-str.active:focus, app-schedulingprog .btnkasra.str-btn.m-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.m-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.m-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.m-str.dropdown-toggle.focus, app-schedulingprog .btnkasra.str-btn.M-str:active:hover, app-schedulingprog .btnkasra.str-btn.M-str:active:focus, app-schedulingprog .btnkasra.str-btn.M-str:active.focus, app-schedulingprog .btnkasra.str-btn.M-str.active:hover, app-schedulingprog .btnkasra.str-btn.M-str.active:focus, app-schedulingprog .btnkasra.str-btn.M-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.M-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.M-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.M-str.dropdown-toggle.focus, app-schedulingprog .btnkasra.str-btn.Mornings-str:active:hover, app-schedulingprog .btnkasra.str-btn.Mornings-str:active:focus, app-schedulingprog .btnkasra.str-btn.Mornings-str:active.focus, app-schedulingprog .btnkasra.str-btn.Mornings-str.active:hover, app-schedulingprog .btnkasra.str-btn.Mornings-str.active:focus, app-schedulingprog .btnkasra.str-btn.Mornings-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.Mornings-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.Mornings-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.Mornings-str.dropdown-toggle.focus {
+            color: white;
+            background-color: #1d65b8;
+            border-color: #185195; }
+        app-schedulingprog .btnkasra.str-btn.m-str:active, app-schedulingprog .btnkasra.str-btn.m-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.m-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.M-str:active, app-schedulingprog .btnkasra.str-btn.M-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.M-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.Mornings-str:active, app-schedulingprog .btnkasra.str-btn.Mornings-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.Mornings-str.dropdown-toggle {
+          background-image: none; }
+        app-schedulingprog .btnkasra.str-btn.m-str.disabled, app-schedulingprog .btnkasra.str-btn.m-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.m-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.m-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.m-str.disabled:active, app-schedulingprog .btnkasra.str-btn.m-str.disabled.active, app-schedulingprog .btnkasra.str-btn.m-str[disabled], app-schedulingprog .btnkasra.str-btn.m-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.m-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.m-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.m-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.m-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.m-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.m-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.m-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.m-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.m-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.m-str.active, app-schedulingprog .btnkasra.str-btn.M-str.disabled, app-schedulingprog .btnkasra.str-btn.M-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.M-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.M-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.M-str.disabled:active, app-schedulingprog .btnkasra.str-btn.M-str.disabled.active, app-schedulingprog .btnkasra.str-btn.M-str[disabled], app-schedulingprog .btnkasra.str-btn.M-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.M-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.M-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.M-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.M-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.M-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.M-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.M-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.M-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.M-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.M-str.active, app-schedulingprog .btnkasra.str-btn.Mornings-str.disabled, app-schedulingprog .btnkasra.str-btn.Mornings-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.Mornings-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.Mornings-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.Mornings-str.disabled:active, app-schedulingprog .btnkasra.str-btn.Mornings-str.disabled.active, app-schedulingprog .btnkasra.str-btn.Mornings-str[disabled], app-schedulingprog .btnkasra.str-btn.Mornings-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.Mornings-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.Mornings-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.Mornings-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.Mornings-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Mornings-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Mornings-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Mornings-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Mornings-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Mornings-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Mornings-str.active {
+          background-color: #4a90e2;
+          border-color: #4a90e2; }
+        app-schedulingprog .btnkasra.str-btn.m-str .badge, app-schedulingprog .btnkasra.str-btn.M-str .badge, app-schedulingprog .btnkasra.str-btn.Mornings-str .badge {
+          color: #4a90e2;
+          background-color: white; }
+      app-schedulingprog .btnkasra.str-btn.e-str, app-schedulingprog .btnkasra.str-btn.E-str, app-schedulingprog .btnkasra.str-btn.Evenings-str {
+        color: white;
+        background-color: #f5a623;
+        border-color: #f5a623; }
+        app-schedulingprog .btnkasra.str-btn.e-str:focus, app-schedulingprog .btnkasra.str-btn.e-str.focus, app-schedulingprog .btnkasra.str-btn.E-str:focus, app-schedulingprog .btnkasra.str-btn.E-str.focus, app-schedulingprog .btnkasra.str-btn.Evenings-str:focus, app-schedulingprog .btnkasra.str-btn.Evenings-str.focus {
+          color: white;
+          background-color: #db8c0a;
+          border-color: #925d07; }
+        app-schedulingprog .btnkasra.str-btn.e-str:hover, app-schedulingprog .btnkasra.str-btn.E-str:hover, app-schedulingprog .btnkasra.str-btn.Evenings-str:hover {
+          color: white;
+          background-color: #db8c0a;
+          border-color: #d1860a; }
+        app-schedulingprog .btnkasra.str-btn.e-str:active, app-schedulingprog .btnkasra.str-btn.e-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.e-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.E-str:active, app-schedulingprog .btnkasra.str-btn.E-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.E-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.Evenings-str:active, app-schedulingprog .btnkasra.str-btn.Evenings-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.Evenings-str.dropdown-toggle {
+          color: white;
+          background-color: #db8c0a;
+          border-color: #d1860a; }
+          app-schedulingprog .btnkasra.str-btn.e-str:active:hover, app-schedulingprog .btnkasra.str-btn.e-str:active:focus, app-schedulingprog .btnkasra.str-btn.e-str:active.focus, app-schedulingprog .btnkasra.str-btn.e-str.active:hover, app-schedulingprog .btnkasra.str-btn.e-str.active:focus, app-schedulingprog .btnkasra.str-btn.e-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.e-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.e-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.e-str.dropdown-toggle.focus, app-schedulingprog .btnkasra.str-btn.E-str:active:hover, app-schedulingprog .btnkasra.str-btn.E-str:active:focus, app-schedulingprog .btnkasra.str-btn.E-str:active.focus, app-schedulingprog .btnkasra.str-btn.E-str.active:hover, app-schedulingprog .btnkasra.str-btn.E-str.active:focus, app-schedulingprog .btnkasra.str-btn.E-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.E-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.E-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.E-str.dropdown-toggle.focus, app-schedulingprog .btnkasra.str-btn.Evenings-str:active:hover, app-schedulingprog .btnkasra.str-btn.Evenings-str:active:focus, app-schedulingprog .btnkasra.str-btn.Evenings-str:active.focus, app-schedulingprog .btnkasra.str-btn.Evenings-str.active:hover, app-schedulingprog .btnkasra.str-btn.Evenings-str.active:focus, app-schedulingprog .btnkasra.str-btn.Evenings-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.Evenings-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.Evenings-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.Evenings-str.dropdown-toggle.focus {
+            color: white;
+            background-color: #b97708;
+            border-color: #925d07; }
+        app-schedulingprog .btnkasra.str-btn.e-str:active, app-schedulingprog .btnkasra.str-btn.e-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.e-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.E-str:active, app-schedulingprog .btnkasra.str-btn.E-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.E-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.Evenings-str:active, app-schedulingprog .btnkasra.str-btn.Evenings-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.Evenings-str.dropdown-toggle {
+          background-image: none; }
+        app-schedulingprog .btnkasra.str-btn.e-str.disabled, app-schedulingprog .btnkasra.str-btn.e-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.e-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.e-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.e-str.disabled:active, app-schedulingprog .btnkasra.str-btn.e-str.disabled.active, app-schedulingprog .btnkasra.str-btn.e-str[disabled], app-schedulingprog .btnkasra.str-btn.e-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.e-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.e-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.e-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.e-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.e-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.e-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.e-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.e-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.e-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.e-str.active, app-schedulingprog .btnkasra.str-btn.E-str.disabled, app-schedulingprog .btnkasra.str-btn.E-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.E-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.E-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.E-str.disabled:active, app-schedulingprog .btnkasra.str-btn.E-str.disabled.active, app-schedulingprog .btnkasra.str-btn.E-str[disabled], app-schedulingprog .btnkasra.str-btn.E-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.E-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.E-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.E-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.E-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.E-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.E-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.E-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.E-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.E-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.E-str.active, app-schedulingprog .btnkasra.str-btn.Evenings-str.disabled, app-schedulingprog .btnkasra.str-btn.Evenings-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.Evenings-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.Evenings-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.Evenings-str.disabled:active, app-schedulingprog .btnkasra.str-btn.Evenings-str.disabled.active, app-schedulingprog .btnkasra.str-btn.Evenings-str[disabled], app-schedulingprog .btnkasra.str-btn.Evenings-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.Evenings-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.Evenings-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.Evenings-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.Evenings-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Evenings-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Evenings-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Evenings-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Evenings-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Evenings-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Evenings-str.active {
+          background-color: #f5a623;
+          border-color: #f5a623; }
+        app-schedulingprog .btnkasra.str-btn.e-str .badge, app-schedulingprog .btnkasra.str-btn.E-str .badge, app-schedulingprog .btnkasra.str-btn.Evenings-str .badge {
+          color: #f5a623;
+          background-color: white; }
+      app-schedulingprog .btnkasra.str-btn.n-str, app-schedulingprog .btnkasra.str-btn.N-str, app-schedulingprog .btnkasra.str-btn.Night-str {
+        color: white;
+        background-color: #7e1f9f;
+        border-color: #7e1f9f; }
+        app-schedulingprog .btnkasra.str-btn.n-str:focus, app-schedulingprog .btnkasra.str-btn.n-str.focus, app-schedulingprog .btnkasra.str-btn.N-str:focus, app-schedulingprog .btnkasra.str-btn.N-str.focus, app-schedulingprog .btnkasra.str-btn.Night-str:focus, app-schedulingprog .btnkasra.str-btn.Night-str.focus {
+          color: white;
+          background-color: #5c1774;
+          border-color: #290a34; }
+        app-schedulingprog .btnkasra.str-btn.n-str:hover, app-schedulingprog .btnkasra.str-btn.N-str:hover, app-schedulingprog .btnkasra.str-btn.Night-str:hover {
+          color: white;
+          background-color: #5c1774;
+          border-color: #55156c; }
+        app-schedulingprog .btnkasra.str-btn.n-str:active, app-schedulingprog .btnkasra.str-btn.n-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.n-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.N-str:active, app-schedulingprog .btnkasra.str-btn.N-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.N-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.Night-str:active, app-schedulingprog .btnkasra.str-btn.Night-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.Night-str.dropdown-toggle {
+          color: white;
+          background-color: #5c1774;
+          border-color: #55156c; }
+          app-schedulingprog .btnkasra.str-btn.n-str:active:hover, app-schedulingprog .btnkasra.str-btn.n-str:active:focus, app-schedulingprog .btnkasra.str-btn.n-str:active.focus, app-schedulingprog .btnkasra.str-btn.n-str.active:hover, app-schedulingprog .btnkasra.str-btn.n-str.active:focus, app-schedulingprog .btnkasra.str-btn.n-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.n-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.n-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.n-str.dropdown-toggle.focus, app-schedulingprog .btnkasra.str-btn.N-str:active:hover, app-schedulingprog .btnkasra.str-btn.N-str:active:focus, app-schedulingprog .btnkasra.str-btn.N-str:active.focus, app-schedulingprog .btnkasra.str-btn.N-str.active:hover, app-schedulingprog .btnkasra.str-btn.N-str.active:focus, app-schedulingprog .btnkasra.str-btn.N-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.N-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.N-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.N-str.dropdown-toggle.focus, app-schedulingprog .btnkasra.str-btn.Night-str:active:hover, app-schedulingprog .btnkasra.str-btn.Night-str:active:focus, app-schedulingprog .btnkasra.str-btn.Night-str:active.focus, app-schedulingprog .btnkasra.str-btn.Night-str.active:hover, app-schedulingprog .btnkasra.str-btn.Night-str.active:focus, app-schedulingprog .btnkasra.str-btn.Night-str.active.focus,
+          .open > app-schedulingprog .btnkasra.str-btn.Night-str.dropdown-toggle:hover,
+          .open > app-schedulingprog .btnkasra.str-btn.Night-str.dropdown-toggle:focus,
+          .open > app-schedulingprog .btnkasra.str-btn.Night-str.dropdown-toggle.focus {
+            color: white;
+            background-color: #451156;
+            border-color: #290a34; }
+        app-schedulingprog .btnkasra.str-btn.n-str:active, app-schedulingprog .btnkasra.str-btn.n-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.n-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.N-str:active, app-schedulingprog .btnkasra.str-btn.N-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.N-str.dropdown-toggle, app-schedulingprog .btnkasra.str-btn.Night-str:active, app-schedulingprog .btnkasra.str-btn.Night-str.active,
+        .open > app-schedulingprog .btnkasra.str-btn.Night-str.dropdown-toggle {
+          background-image: none; }
+        app-schedulingprog .btnkasra.str-btn.n-str.disabled, app-schedulingprog .btnkasra.str-btn.n-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.n-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.n-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.n-str.disabled:active, app-schedulingprog .btnkasra.str-btn.n-str.disabled.active, app-schedulingprog .btnkasra.str-btn.n-str[disabled], app-schedulingprog .btnkasra.str-btn.n-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.n-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.n-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.n-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.n-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.n-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.n-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.n-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.n-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.n-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.n-str.active, app-schedulingprog .btnkasra.str-btn.N-str.disabled, app-schedulingprog .btnkasra.str-btn.N-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.N-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.N-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.N-str.disabled:active, app-schedulingprog .btnkasra.str-btn.N-str.disabled.active, app-schedulingprog .btnkasra.str-btn.N-str[disabled], app-schedulingprog .btnkasra.str-btn.N-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.N-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.N-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.N-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.N-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.N-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.N-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.N-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.N-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.N-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.N-str.active, app-schedulingprog .btnkasra.str-btn.Night-str.disabled, app-schedulingprog .btnkasra.str-btn.Night-str.disabled:hover, app-schedulingprog .btnkasra.str-btn.Night-str.disabled:focus, app-schedulingprog .btnkasra.str-btn.Night-str.disabled.focus, app-schedulingprog .btnkasra.str-btn.Night-str.disabled:active, app-schedulingprog .btnkasra.str-btn.Night-str.disabled.active, app-schedulingprog .btnkasra.str-btn.Night-str[disabled], app-schedulingprog .btnkasra.str-btn.Night-str[disabled]:hover, app-schedulingprog .btnkasra.str-btn.Night-str[disabled]:focus, app-schedulingprog .btnkasra.str-btn.Night-str[disabled].focus, app-schedulingprog .btnkasra.str-btn.Night-str[disabled]:active, app-schedulingprog .btnkasra.str-btn.Night-str[disabled].active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Night-str,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Night-str:hover,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Night-str:focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Night-str.focus,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Night-str:active,
+        fieldset[disabled] app-schedulingprog .btnkasra.str-btn.Night-str.active {
+          background-color: #7e1f9f;
+          border-color: #7e1f9f; }
+        app-schedulingprog .btnkasra.str-btn.n-str .badge, app-schedulingprog .btnkasra.str-btn.N-str .badge, app-schedulingprog .btnkasra.str-btn.Night-str .badge {
+          color: #7e1f9f;
+          background-color: white; }
+  app-schedulingprog .checkmark {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    display: none;
+    text-align: center;
+    padding: 3px;
+    line-height: 0;
+    top: 2px;
+    left: 2px;
+    border-radius: 2px; }
+    app-schedulingprog .checkmark i {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      color: white;
+      font-size: 10px;
+      margin: 0; }
+    app-schedulingprog .checkmark.selected {
+      display: block; }
+  app-schedulingprog .btnkasra:last-child {
+    margin: 0; }
+  app-schedulingprog .payment_displayName {
+    display: inline-block;
+    border: 1px solid #0078de;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 0.84rem;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    background-color: #eee; }
+  app-schedulingprog .department-dropdown .dropdown .dropdown-toggle {
+    display: inline-block;
+    border: 1px solid #0078de;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 0;
+    margin: 0;
+    font-size: 0.84rem;
+    height: 25px;
+    line-height: 25px;
+    min-width: 250px;
+    text-align: right;
+    background-color: white; }
+    app-schedulingprog .department-dropdown .dropdown .dropdown-toggle .placeholder {
+      display: inline-block;
+      width: 90%;
+      max-width: 220px;
+      overflow: hidden;
+      vertical-align: middle;
+      text-overflow: ellipsis; }
+  app-schedulingprog .department-dropdown .dropdown .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto; }
+    app-schedulingprog .department-dropdown .dropdown .dropdown-menu .mat-tree-node {
+      min-height: 25px;
+      line-height: 25px; }
+    app-schedulingprog .department-dropdown .dropdown .dropdown-menu button {
+      border: 0;
+      padding: 0;
+      background-color: transparent; }
+    app-schedulingprog .department-dropdown .dropdown .dropdown-menu .material-icons {
+      font-size: 1rem; }
+    app-schedulingprog .department-dropdown .dropdown .dropdown-menu .mat-checkbox-ripple {
+      height: 24px;
+      width: 24px;
+      left: calc(50% - 12px);
+      top: calc(50% - 12px); }
+    app-schedulingprog .department-dropdown .dropdown .dropdown-menu .mat-checkbox-frame {
+      display: none; }
+  app-schedulingprog .top-wrapper:after, app-schedulingprog .top-wrapper:before {
+    content: "";
+    display: table; }
+  app-schedulingprog .top-wrapper:after {
+    clear: both; }
+  app-schedulingprog .top-wrapper .dropdown .dropdown-menu li a {
+    display: block;
+    white-space: nowrap;
+    padding: 5px 15px; }
+    app-schedulingprog .top-wrapper .dropdown .dropdown-menu li a span {
+      display: inline-block; }
+      app-schedulingprog .top-wrapper .dropdown .dropdown-menu li a span.label:after {
+        content: ":";
+        padding: 0 5px; }
+      app-schedulingprog .top-wrapper .dropdown .dropdown-menu li a span.spliter {
+        padding: 0 10px; }
+        app-schedulingprog .top-wrapper .dropdown .dropdown-menu li a span.spliter:after {
+          content: "/"; }
+        app-schedulingprog .top-wrapper .dropdown .dropdown-menu li a span.spliter:last-child:after {
+          content: ""; }
+  app-schedulingprog .btnkasra.active {
+    border-color: #0078de !important;
+    color: #0078de !important;
+    background-color: rgba(0, 120, 222, 0.2) !important; }
+  app-schedulingprog .fixed {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    z-index: 9;
+    width: 222px; }
+    app-schedulingprog .fixed:after, app-schedulingprog .fixed:before {
+      content: "";
+      display: table; }
+    app-schedulingprog .fixed:after {
+      clear: both; }
+  app-schedulingprog .scrollable {
+    position: relative;
+    padding-right: 222px; }
+  app-schedulingprog table.table-layout {
+    border-collapse: collapse;
+    box-sizing: content-box; }
+    app-schedulingprog table.table-layout tr td {
+      vertical-align: middle;
+      /*width:$box-width;
+                height:$box-height;*/
+      border: 1px solid #ccc;
+      white-space: nowrap;
+      border-left: 0;
+      /*&:last-child{
+                    border-left-width:1px;
+                }*/ }
+  app-schedulingprog .box-wrapper {
+    position: relative;
+    width: 200px;
+    height: 80px;
+    /*overflow:hidden;*/ }
+    app-schedulingprog .box-wrapper:after, app-schedulingprog .box-wrapper:before {
+      content: "";
+      display: table; }
+    app-schedulingprog .box-wrapper:after {
+      clear: both; }
+  app-schedulingprog .handle-wrapper {
+    width: 20px;
+    height: 80px;
+    cursor: pointer;
+    background-color: #fbfbfb; }
+    app-schedulingprog .handle-wrapper span {
+      display: block;
+      text-align: center;
+      color: #999; }
+    app-schedulingprog .handle-wrapper .row-index {
+      color: #333;
+      font-size: 12px;
+      margin-bottom: 15px; }
+  app-schedulingprog .controller-wrapper {
+    width: 220px;
+    height: 40px;
+    padding-left: 5px; }
+    app-schedulingprog .controller-wrapper .table-row {
+      height: 40px;
+      table-layout: fixed; }
+      app-schedulingprog .controller-wrapper .table-row .table-cell {
+        vertical-align: top;
+        text-align: center;
+        padding: 0 2px;
+        position: relative; }
+        app-schedulingprog .controller-wrapper .table-row .table-cell:first-child {
+          padding-right: 0; }
+    app-schedulingprog .controller-wrapper .search-wrapper {
+      position: relative; }
+      app-schedulingprog .controller-wrapper .search-wrapper input {
+        display: block;
+        width: 100%;
+        height: 20px;
+        font-size: 0.74rem;
+        border: 1px solid #dadada;
+        border-radius: 3px;
+        padding: 0;
+        padding-left: 18px; }
+      app-schedulingprog .controller-wrapper .search-wrapper i {
+        position: absolute;
+        top: calc(50% - 6px);
+        left: 5px;
+        font-size: 0.7rem;
+        color: #ccc; }
+    app-schedulingprog .controller-wrapper .btnkasra {
+      padding: 0;
+      min-width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: top; }
+      app-schedulingprog .controller-wrapper .btnkasra i {
+        margin: 0;
+        display: inline-block;
+        font-size: 0.7rem;
+        line-height: 18px; }
+  app-schedulingprog .app-header,
+  app-schedulingprog .app-body,
+  app-schedulingprog .app-footer {
+    position: relative; }
+  app-schedulingprog .app-header {
+    margin-bottom: 3px; }
+    app-schedulingprog .app-header .fixed {
+      z-index: 50;
+      background-color: white; }
+    app-schedulingprog .app-header .scrollable {
+      overflow: hidden; }
+    app-schedulingprog .app-header table tr td {
+      border-color: transparent; }
+    app-schedulingprog .app-header .header-cell .box-wrapper {
+      height: 40px;
+      background-color: #e6e6e6;
+      text-align: center;
+      border-radius: 5px;
+      line-height: 40px;
+      display: table-cell; }
+    app-schedulingprog .app-header .header-cell span {
+      display: inline-block;
+      font-size: 0.78rem; }
+    app-schedulingprog .app-header .header-cell a {
+      color: #333;
+      vertical-align: middle;
+      height: 100%;
+      display: table-cell;
+      width: 100%; }
+      app-schedulingprog .app-header .header-cell a i {
+        vertical-align: middle;
+        font-size: 10px;
+        margin: 0 5px;
+        display: none; }
+      app-schedulingprog .app-header .header-cell a.asc i, app-schedulingprog .app-header .header-cell a.des i {
+        display: inline-block; }
+      app-schedulingprog .app-header .header-cell a.asc i {
+        transform: rotate(180deg); }
+    app-schedulingprog .app-header .header-cell .holiday {
+      background-color: #eb6f6f;
+      color: white; }
+      app-schedulingprog .app-header .header-cell .holiday a {
+        color: white; }
+  app-schedulingprog .app-body {
+    /*overflow-y:auto;*/ }
+    app-schedulingprog .app-body .body-wrapper {
+      position: relative; }
+    app-schedulingprog .app-body .body-cell.selected {
+      background-color: #ffe6bd; }
+    app-schedulingprog .app-body .body-cell.holiday {
+      border-right-color: #eb6f6f; }
+    app-schedulingprog .app-body .body-cell .str-item {
+      margin-bottom: 2px; }
+      app-schedulingprog .app-body .body-cell .str-item:last-child {
+        margin: 0; }
+  app-schedulingprog .app-footer {
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 99; }
+    app-schedulingprog .app-footer .fixed {
+      height: auto;
+      background-color: #0078de;
+      z-index: 999; }
+      app-schedulingprog .app-footer .fixed .table-row {
+        table-layout: fixed; }
+    app-schedulingprog .app-footer .scrollable {
+      overflow: hidden; }
+    app-schedulingprog .app-footer table tr td {
+      border-color: transparent; }
+    app-schedulingprog .app-footer .footer-top {
+      background-color: #0078de;
+      position: relative;
+      border-top: 2px solid #0078de;
+      border-bottom: 3px solid #0f5b9c;
+      /*padding: 5px 0;*/ }
+      app-schedulingprog .app-footer .footer-top .controller-wrapper {
+        height: auto;
+        text-align: center;
+        font-size: 0.78rem;
+        color: white;
+        line-height: 30px; }
+      app-schedulingprog .app-footer .footer-top .box-wrapper {
+        height: auto;
+        text-align: center;
+        font-size: 0.78rem;
+        /*padding:3px;*/ }
+        app-schedulingprog .app-footer .footer-top .box-wrapper span {
+          display: block;
+          background-color: white;
+          padding: 5px;
+          border-radius: 5px;
+          line-height: 14px; }
+      app-schedulingprog .app-footer .footer-top .footer-bottom-collapse-btn {
+        display: inline-block;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+        bottom: 0;
+        right: 10px;
+        background-color: #0f5b9c;
+        color: white;
+        cursor: pointer;
+        line-height: 25px;
+        height: 23px;
+        border-radius: 3px 3px 0 0; }
+        app-schedulingprog .app-footer .footer-top .footer-bottom-collapse-btn span {
+          color: white;
+          display: inline-block;
+          vertical-align: middle; }
+    app-schedulingprog .app-footer .footer-bottom {
+      background-color: #0f5b9c;
+      padding: 10px;
+      overflow-y: auto;
+      white-space: nowrap;
+      display: block; }
+      app-schedulingprog .app-footer .footer-bottom.collapsed {
+        display: none; }
+  app-schedulingprog .monthly .app-header .scrollable .header-cell .box-wrapper {
+    width: 50px;
+    display: table; }
+  app-schedulingprog .monthly .app-header .scrollable .header-cell .day_num, app-schedulingprog .monthly .app-header .scrollable .header-cell .day_title {
+    font-size: 12px;
+    line-height: 14px; }
+  app-schedulingprog .monthly .app-header .scrollable .header-cell .day_num {
+    font-size: 18px;
+    line-height: 16px; }
+  app-schedulingprog .monthly .app-body .scrollable .body-cell .box-wrapper {
+    width: 50px; }
+  app-schedulingprog .monthly .app-footer .footer-cell .box-wrapper {
+    width: 50px;
+    background-color: white;
+    height: 16px;
+    line-height: 16px; }
+  app-schedulingprog .monthly .app-footer .fixed .second-cell {
+    width: 50px; }
+  app-schedulingprog .monthly .app-footer .fixed .footer-cell .box-wrapper {
+    background-color: transparent; }

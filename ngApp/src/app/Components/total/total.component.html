@@ -1,0 +1,43 @@
+<!-- Total Component -->
+<div class="app-footer">
+    <div class="footer-top">
+        <div class="fixed">
+          <div class="table-row controller-wrapper">
+            <div class="table-cell" style="vertical-align:middle;">
+                <span>شیفت</span>
+                <div class="footer-bottom-collapse-btn" (click)="onFooterBottomCollapseBtn($event)">
+                    <span class="icon-show-more-button2"></span>
+                </div>              
+            </div>
+            <div class="table-cell second-cell">
+                <table class="table-layout">
+                    <tbody>
+                        <tr *ngFor="let strRow of structureService.toolbarStructuresList">
+                            <td>
+                                <div class="footer-cell">
+                                    <div class="box-wrapper">
+                                        <div class="str-item" [ngClass]="{'m-str': strRow.CategoryStructureTitle  == 'M','e-str': strRow.CategoryStructureTitle  == 'E','n-str': strRow.CategoryStructureTitle  == 'N'}">{{strRow.CategoryStructureTitle}}</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>              
+            </div>
+          </div>
+        </div>
+        <div class="scrollable">
+            <table class="table-layout">
+                <tbody>
+                    <tr *ngFor="let strRow of structureService.toolbarStructuresList">
+                        <td *ngFor="let strCell of service.SchedulingProgDetailList_header">
+                            <div class="footer-cell">
+                                <div class="box-wrapper">{{service.SchedulingProgDetailList|totalOfColumns:strRow.CategoryStructureID:strCell.DayNo}}</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

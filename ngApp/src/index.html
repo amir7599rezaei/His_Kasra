@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ngappdist</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-schedulingprog dictionary="{
+    'error': {'person':'کاربر' ,'errorType':'نوع خطا' ,'noMessage':'پیغامی جهت نمایش وجود ندارد'},
+    'button':{'save': 'ذخیره' ,'filter':'فیلتر' ,'departmentUnitName': 'واحد سازمانی'},
+    'messageComponent':{'page':'صفحه' ,'from':'از'},
+    'sort':{'sort':'مرتب سازی' ,'sortItems':'مرتب سازی بر اساس' ,'sortTypes':'نحوه مرتب سازی' ,'asc':'صعودی' ,'desc':'نزولی'},
+    'Credit':{'HourlyCredit':'مجوز ساعتی' , 'DailyCredit':'مجوز روزانه'},
+    'messageComponent':{'page':'صفحه' ,'from':'از','date':'تاریخ'},
+    'addMessageComponent':{'addMessage':'افزودن یادداشت','chooseCode':'انتخاب آیتم','name':'نام','day':'روز','description':'توضیحات'},
+    'confirmComponent':{'yes':'بله','no':'خیر','deleteTitle':'حذف پیام','deleteMessage':'آیا برای حذف مطمئن هستید؟'}
+  }"
+    inputparams="{'OnlineUserId':'5529', 'SystemId':'93', 'MenuItemId':'93002','apiUrl':{'lego':'http://localhost:90/Lego.Web/api/Lego/','his':'http://localhost:90/Lego.Web/api/HIS/'},'DepartmentID' : '612',
+    'DepartmentName' : 'آمار و اطلاعات','WPID' : '68','Version' : '0'}"
+  Permisions="{
+      'cartable' : true
+  }">
+</app-schedulingprog>
+</body>
+</html>

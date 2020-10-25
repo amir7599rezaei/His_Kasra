@@ -1,0 +1,72 @@
+<div class="box-wrapper" [ngClass]="{'has-credit':dayInfo.DayStyle != '', 'has-cartable':dayInfo.hasCartable, 'show-cartable':structureService.isShowCartableChanges}">
+    <!-- Message Tooltip -->
+    <app-message-tooltip [dayInfo]="dayInfo"></app-message-tooltip>
+
+    <!-- Credit wrapper -->
+    <ng-container *ngIf="dayInfo.DayStyle != ''">
+        <div class="credit-wrapper">
+            <div class="txt">{{service.Dictionary.Credit[dayInfo.DayStyle]}}</div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="this.checkCartableCondition()">
+        <div class="str-items-wrapper">
+            <div 
+            *ngFor="let structure of dayInfo.CartableStructures"
+            (mouseover)="showCloseBtn(structure)" 
+            (mouseleave)="hideCloseBtn(structure)" 
+            [ngClass]="getStructureClass(structure)"
+            class="str-item"  
+            [ngStyle]="getStructureStyle(structure)"
+            >
+                <!-- <span 
+                *ngIf="structure.showFlag && !structure.OtherDepartmentStructure" 
+                (click)="this.structureService.removeStructure(structure, dayInfo)"
+                class="str-close-btn"
+                >&times;</span> -->
+
+                <span class="str-name">{{this.getStructureTitle(structure)}}</span>
+                
+                <span *ngIf="structure.CartableDocTypeTitle == 'add'" style="position:absolute;width:10px;height:10px;line-height:10px;color:white;border-radius:50%;background-color:green;text-align: center;font-size:9px;">+</span>
+                <span *ngIf="structure.CartableDocTypeTitle == 'remove'" style="position:absolute;width:10px;height:10px;line-height:10px;color:white;border-radius:50%;background-color:red;text-align: center;font-size:9px;">-</span>
+                <span *ngIf="structure.CartableDocTypeTitle == 'change'" style="position:absolute;width:10px;height:10px;line-height:10px;color:white;border-radius:50%;background-color:blue;text-align: center;font-size:9px;"></span>
+                <!-- <ng-container *ngFor="let spi of dayInfo.SpecialItems">
+                    <ng-container *ngIf="spi.CategoryStructureID==structure.CategoryStructureID">
+                        <i class="specialItem-icon {{spi.icon}}"></i>
+                    </ng-container>
+                </ng-container> -->
+            </div>                
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!this.checkCartableCondition()">
+        <!-- Structures wrapper -->
+        <div class="str-items-wrapper">
+
+            <div 
+            *ngFor="let structure of dayInfo.Structures"
+            (mouseover)="showCloseBtn(structure)" 
+            (mouseleave)="hideCloseBtn(structure)" 
+            [ngClass]="getStructureClass(structure)"
+            class="str-item"  
+            [ngStyle]="getStructureStyle(structure)"
+            >
+                <span 
+                *ngIf="structure.showFlag && !structure.OtherDepartmentStructure" 
+                (click)="this.structureService.removeStructure(structure, dayInfo)"
+                class="str-close-btn"
+                >&times;</span>
+
+                <span class="str-name">{{this.getStructureTitle(structure)}}</span>
+
+                <ng-container *ngFor="let spi of dayInfo.SpecialItems">
+                    <ng-container *ngIf="spi.CategoryStructureID==structure.CategoryStructureID">
+                        <i class="specialItem-icon {{spi.icon}}"></i>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+
+    <span *ngIf="dayInfo.hasCartable" class="cartable-triangle"></span>
+</div>

@@ -1,0 +1,24 @@
+$text-direction:ltr !default;
+
+$dir: $text-direction;
+
+$left: left;
+$right: right;
+
+// Mixin and Functions
+@if $dir != ltr {
+	$left: right;
+	$right: left;
+}
+
+// These Mixins check your direction and display @content
+@mixin if-ltr { 
+	@if $dir == ltr {
+		@content;
+	}
+}
+@mixin if-rtl {
+	@if $dir != ltr {
+		@content;
+	}
+}

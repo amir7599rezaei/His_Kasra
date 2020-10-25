@@ -1,0 +1,7 @@
+C:\Project\MasterMindAgile\Kasra_Development\LegoProject\Lego.FrameworkWeb\Lego.Web\bin\Lego.Module.HISWeb.dll.config
+C:\Project\MasterMindAgile\Kasra_Development\LegoProject\Lego.FrameworkWeb\Lego.Web\bin\Lego.Module.HISWeb.dll
+C:\Project\MasterMindAgile\Kasra_Development\LegoProject\Lego.FrameworkWeb\Lego.Web\bin\Lego.Module.HISWeb.pdb
+C:\Project\MasterMindAgile\Kasra_Development\LegoProject\Lego.FrameworkWeb\Lego.Web\Areas\Lego.Module.HIS\Lego.Module.HISWeb\obj\Debug\Lego.Module.HISWeb.csprojAssemblyReference.cache
+C:\Project\MasterMindAgile\Kasra_Development\LegoProject\Lego.FrameworkWeb\Lego.Web\Areas\Lego.Module.HIS\Lego.Module.HISWeb\obj\Debug\Lego.Module.HISWeb.csproj.CopyComplete
+C:\Project\MasterMindAgile\Kasra_Development\LegoProject\Lego.FrameworkWeb\Lego.Web\Areas\Lego.Module.HIS\Lego.Module.HISWeb\obj\Debug\Lego.Module.HISWeb.dll
+C:\Project\MasterMindAgile\Kasra_Development\LegoProject\Lego.FrameworkWeb\Lego.Web\Areas\Lego.Module.HIS\Lego.Module.HISWeb\obj\Debug\Lego.Module.HISWeb.pdb

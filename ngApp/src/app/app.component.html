@@ -1,0 +1,222 @@
+<div class="toolbar">
+	<div class="filterbar inner-wrapper bordered display-inline-block">
+		<div class="kasra-form-control" style="width:300px;">
+			<app-department-control></app-department-control>
+		</div>
+		<!-- <div class="kasra-form-control" style="width:100px;">
+			<div class="kasra-form kasra-form-combo" style="position: relative;">
+				<select name="" id="ShiftVersions_DDL" [(ngModel)]="this.service.ShiftVersions_model" style="width: 100%;">
+					<option [value]="item.val" *ngFor="let item of this.service.ShiftVersions_LComboListData">{{item.Title}}</option>
+				</select>
+			</div>
+		</div> -->
+		<div class="kasra-form-control" style="width:100px;">
+			<div class="kasra-form kasra-form-combo" style="position: relative;">
+				<select name="" id="ReplaceShiftWP_DDL" [(ngModel)]="this.service.ReplaceShiftWP_model" style="width: 100%;">
+					<option [value]="item.val" *ngFor="let item of this.service.ReplaceShiftWP_LComboListData">{{item.title}}</option>
+				</select>
+			</div>
+		</div>
+		<button class="btnkasra btn-filter" (click)="onFilterBtn()" style="margin: 5px">
+			<i class="icon-filter"></i>
+			<span>{{service.Dictionary.button.filter}}</span>
+		</button>
+	</div>
+
+	<div class="inner-wrapper bordered display-inline-block">
+		<button *ngIf="this.service.showBtnSetting[0] == 1" class="btnkasra btn-primary" (click)="onSaveBtn(0)" style="min-width: 50px;">
+			<span>ذخیره</span>
+		</button>
+		<button *ngIf="this.service.showBtnSetting[1] == 2" class="btnkasra btn-info" (click)="onFinalBtn()" style="min-width: 50px;">
+			<span>نهایی</span>
+		</button>
+		<button *ngIf="this.service.showBtnSetting[2] == 3" class="btnkasra btn-primary" (click)="onAcceptBtn()" style="min-width: 50px;">
+			<span>تایید</span>
+		</button>
+		<button class="btnkasra btn-primary" (click)="onRegisterCreditBtn()" style="min-width: 50px;">
+			<!-- <i class="icon-plus fs-16" style="vertical-align: middle;"></i> -->
+			<span class="fs-12">ثبت مجوز</span>
+		</button>
+		<!-- <button class="btnkasra btn-danger" style="min-width: 50px;">
+			<span>لغو</span>
+		</button> -->
+
+		<!-- Message Components -->
+		<app-message-component></app-message-component>
+
+		<!-- Cartable Component -->
+		<app-cartable-component></app-cartable-component>
+
+	</div>
+	<div class="structureItem-list inner-wrapper bordered display-inline-block" style="background-color: #eee; padding:2px;">
+		<div class="inner-wrapper bordered display-inline-block" style="background-color: #5f5f5f; border-color: black;">
+			<ng-container *ngFor="let str of structureService.toolbarStructuresList;">
+				<button class="btnkasra btn-default customBtn str-btn" [ngClass]="[str.CategoryStructureTitle + '-str', str.CategoryStructureAcronym + '-str']"
+				 (click)='ToolbarStructure_onClick(str)'>
+					<span>{{str.CategoryStructureTitle}}</span>
+					<span [ngClass]='{selected:str.enable}' class="checkmark">
+						<i class="icon-checkmark"></i>
+					</span>
+				</button>
+			</ng-container>
+		</div>
+	</div>
+
+	<ng-dialog id="structureOfDepartment" width="250px" height="250px" style="width:250px;height:250px;">
+		<ng-container *ngFor="let str of structureService.subStructureList">
+			<button class="btnkasra btn-default customBtn str-btn mb-5 ml-0 mr-0" 
+				[ngClass]="[str.CategoryStructureTitle + '-str', str.CategoryStructureAcronym + '-str']"
+				(click)='Structure_onClick(str)'
+				style="width:100%;">
+				<span>{{str.StructureTitle}}</span>
+				<span [ngClass]='{selected:str.enable}' class="checkmark">
+					<i class="icon-checkmark"></i>
+				</span>
+			</button>
+		</ng-container>
+		<button 
+			class="btnkasra btn-default mt-20" 
+			[ngClass]="{'hidden': this.structureService.getEnabledStructures().length == 0}" 
+			(click)="StructureSelectBtn_onClick()">انتخاب</button>
+	</ng-dialog>
+
+	<div class="specialItem-list inner-wrapper bordered display-inline-block" style="background-color: #eee; padding:2px;">
+		<div class="inner-wrapper bordered display-inline-block" style="background-color: #5f5f5f; border-color: black;">
+			<ng-container *ngFor="let spi of structureService.ToolbarSpecialItemList;">
+				<!-- <span>آنکال</span> -->
+				<button class="btnkasra btn-default customBtn str-btn" (click)='SpecialItems_onClick(spi)' [ngStyle]="{'color':spi.color, 'border-color':spi.color}">
+					<i class="{{spi.icon}}"></i>
+					<span>{{spi.CodeName}}</span>
+					<span [ngClass]='{selected:spi.enable}' class="checkmark">
+						<i class="icon-checkmark"></i>
+					</span>
+				</button>
+			</ng-container>
+		</div>
+	</div>
+
+
+
+</div>
+
+<!--<ng-dialog id="RegisterCreditModal" style="width:800px;height:600px;">
+	<button class="mb-20">انتخاب سلول</button>
+	<div class="RegisterCredit_wrapper"></div>
+</ng-dialog>-->
+
+<div [ngClass]="{hidden:this.service.SchedulingProgDetailList.length == 0}" class="schedulingprog-wrapper monthly">
+	<div class="app-header">
+		<div class="fixed">
+			<table class="table-layout">
+				<tbody>
+					<tr>
+						<td>
+							<div class="controller-wrapper">
+								<div class="table-row">
+									<div class="table-cell" style="width: 64%">
+										<div class="search-wrapper">
+											<!-- <input type="text" [(ngModel)]="service.personNameSearch" (ngModelChange)="service.search($event)" /> -->
+											<input type="text" [(ngModel)]="service.personNameSearchModel" (ngModelChange)="service.searchOnPersonName($event)" />
+											<i class="icon-search"></i>
+										</div>
+									</div>
+									<div class="table-cell" style="width: 12%">
+										<button (click)="openFilterComponent()" class="btnkasra btn-default" [ngClass]="{'active':service.activeFilterBtn}"
+										 name="filter-dropdown-component">
+											<i class="icon-filter" name="filter-dropdown-component"></i>
+										</button>
+									</div>
+									<div class="table-cell" style="width: 12%">
+										<button class="btnkasra btn-default" (click)="toggleSortComponent()" [ngClass]="{'active':service.sort_setting.sortItem!=''}">
+											<i class="icon-up-and-down-arrows"></i>
+										</button>
+									</div>
+									<div class="table-cell" style="width: 12%">
+										<button class="btnkasra btn-default">
+											<i class="icon-visibility-button"></i>
+										</button>
+									</div>
+									<app-sort-dropdown-panel></app-sort-dropdown-panel>
+									<!-- <app-sort-component [showSortComponent]="showSortComponent"></app-sort-component> -->
+									<app-filter-component></app-filter-component>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="scrollable">
+			<table class="table-layout">
+				<tbody>
+					<tr>
+						<td class="header-cell" *ngFor="let header_item of service.SchedulingProgDetailList_header;">
+							<div (click)="focusComponent(header_item,{})" class="box-wrapper" [ngClass]="{'holiday':header_item.isHoliday}">
+								<a href="#">
+									<div class="day_num">{{header_item.DayNo}}</div>
+									<div class="day_title">{{header_item.DayTitle}}</div>
+								</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="app-body">
+		<perfect-scrollbar class="body-ps" style="max-width: 100%; max-height: 480px; min-height: 160px;">
+			<div class="body-wrapper">
+				<!-- body-fixed-wrapper /////////////////////////////////////////////// -->
+				<div class="fixed">
+					<table class="table-layout" *ngIf="service.SchedulingProgDetailList.length > 0">
+						<tbody>
+							<tr *ngFor="let person of service.SchedulingProgDetailList; let i=index">
+								<td>
+									<div class="handle-wrapper">
+										<span class="row-index">{{i+1}}</span>
+										<span class="icon-menu"></span>
+									</div>
+								</td>
+								<td>
+									<app-personel (click)="focusComponent({},person.PersonInfo)" [personelInfo]="person.PersonInfo" [personelSetting]="service.listPersonItems"></app-personel>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- body-scrollable-wrapper /////////////////////////////////////////////// -->
+				<div class="scrollable" *ngIf="service.SchedulingProgDetailList.length > 0">
+					<table class="table-layout">
+						<tbody>
+							<tr *ngFor="let row of service.SchedulingProgDetailList;">
+								<td class="body-cell" *ngFor="let body_item of service.SchedulingProgDetailList_header;let colIdx = index"
+								 [ngClass]="{'holiday':body_item.isHoliday, 'selected':this.service.Selected_day.DayNo == body_item.DayNo && this.service.Selected_day.PersonID == row.PersonInfo.PersonID}">
+									<app-day-component (click)="focusComponent(row.Days[body_item.DayNo],row.PersonInfo);DayComponent_onClick(row.Days[body_item.DayNo], row.PersonInfo)"
+									 [dayInfo]="row.Days[body_item.DayNo]"></app-day-component>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+			</div>
+		</perfect-scrollbar>
+	</div>
+
+	<app-total></app-total>
+
+	<div name="message-dropdown-wrapper">
+		<app-confirm-components></app-confirm-components>
+		<div *ngIf="service.showConfirmComponent.show" class="kasra-modal-overlay" style="position: fixed;z-index: 1000;"></div>
+	</div>
+
+	<div style="position: absolute">
+		<app-add-new-message-component (saveMessageSelectedCell)='service.submitNewMesage()'></app-add-new-message-component>
+		<div *ngIf="service.showAddNewMsgComponent" class="kasra-modal-overlay"></div>
+	</div>
+</div>
+<div *ngIf="this.service.SchedulingProgDetailList.length == 0" class="nodata">
+	<div class="main-content align-center fs-12" style="padding: 50px 0 !important;">آیتمی برای نمایش وجود ندارد.</div>
+</div>

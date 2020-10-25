@@ -1,0 +1,56 @@
+<div class="tooltip-wrapper" *ngIf="dayInfo.HasMessage">
+  <!-- Message Tooltip -->
+  <div class="message-totip">
+    <i class="icon-notice"></i>
+  </div>
+
+  <div class="tooltip-body">
+    <div class="tooltip-body-wrapper message">
+      <div *ngFor="let msg of listSpeceficDayMessage; let i=index" class="tooltip-body-item" [ngClass]="{'read':msg.IsRead == true}">
+        <i class="tooltip-icon icon-notice"></i>
+        <span>{{msg.Message}}</span>
+        <div class="tooltip-body-item-footer">
+          <div class="inner-wrapper">
+            <div class="info"> {{msg.SenderName}} </div>
+            <div class="info"> {{msg.CreateDate}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <span class="tooltiptext">
+    <div class="dropdown message-dropdown-wrapper">
+      <div class="btn-group">
+        <div class="dropdown-wrapper dropdown-menu menu-warning show" style="min-width:400px;">
+
+          <perfect-scrollbar class="dropdown_ps" style="max-width: 100%;min-width: 400px; max-height: 500px;">
+            <ng-container *ngFor="let msg of listSpeceficDayMessage; let i=index">
+              <div class="message-item" [ngClass]="{'read':msg.IsRead == true}">
+                <h4 style="margin: 0;">
+                  {{msg.OwnerName}}
+                  <ng-container *ngIf="msg.Date != null"> {{service.Dictionary.messageComponent.date}} : {{msg.Date}}
+                  </ng-container>
+                </h4>
+                <p class="message-item-body" style="margin: 0;">
+                  {{msg.Message}}
+                </p>
+                <div class="message-item-footer">
+                  <div class="inner-wrapper">
+                    <div class="info"> {{msg.SenderName}} </div>
+                    <div class="info"> {{msg.CreateDate}} </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </perfect-scrollbar>
+          <ng-container *ngIf="listSpeceficDayMessage.length == 0">
+            <div class="message-item read">
+              {{service.Dictionary.error.noMessage}}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </span> -->

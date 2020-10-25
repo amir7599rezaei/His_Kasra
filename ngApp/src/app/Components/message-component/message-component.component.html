@@ -1,0 +1,60 @@
+<div class="dropdown message-dropdown-wrapper">
+  <div class="btn-group">
+    <button name="add-new-message-modal" (click)="showMsgComponent()" class="btnkasra btn-warning btn-lg">
+      <i name="add-new-message-modal" style="margin: 0;vertical-align: middle;font-size: 16px" class="icon-plus"></i>
+    </button>
+    <button name="message-dropdown-wrapper" (click)="openMessageBox()" class="btnkasra btn-warning btn-lg dropdown-toggle btn-icon">
+      <div name="message-dropdown-wrapper" class="message-read-num-wrapper">
+        <i name="message-dropdown-wrapper" class="icon-notice"></i>
+        <span name="message-dropdown-wrapper" class="message-read-num">{{service.listNotifyMessage|notSeenNotifyMessage}}</span>
+      </div>
+      <span name="message-dropdown-wrapper" style="margin: 0 3px;">{{service.listNotifyMessage.length}}</span>
+    </button>
+    <div class="dropdown-wrapper dropdown-menu menu-warning" style="min-width:400px;" [ngClass]="{'show':service.showMessageComponent}">
+
+      <perfect-scrollbar class="dropdown_ps" style="max-width: 100%;min-width: 400px; max-height: 500px;">
+        <ng-container *ngFor="let msg of service.listNotifyMessage; let i=index">
+          <div name="message-dropdown-wrapper" *ngIf="(i >= service.paginateNotifyMessage.paginate*(service.paginateNotifyMessage.limit)) && (i < (service.paginateNotifyMessage.paginate + 1)*(service.paginateNotifyMessage.limit))"
+            class="message-item" [ngClass]="{'read':msg.IsRead == true}">
+            <h4 name="message-dropdown-wrapper" style="margin: 0;">
+              {{msg.OwnerName}}
+              <ng-container *ngIf="msg.Date != null"> {{service.Dictionary.messageComponent.date}} : {{msg.Date}} </ng-container>
+            </h4>
+            <p class="message-item-body" name="message-dropdown-wrapper" style="margin: 0;">
+              {{msg.Message}}
+            </p>
+            <div class="message-item-footer">
+              <div class="inner-wrapper">
+                <div name="message-dropdown-wrapper" class="info"> {{msg.SenderName}} </div>
+                <div name="message-dropdown-wrapper" class="info"> {{msg.CreateDate}} </div>
+                <div name="message-dropdown-wrapper" (click)="service.confirmDeleteMessage(msg)" class="remove-btn">
+                  <i name="message-dropdown-wrapper" class="icon-rubbish-bin"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </perfect-scrollbar>
+      <ng-container *ngIf="service.listNotifyMessage.length == 0">
+        <div name="message-dropdown-wrapper" class="message-item read">
+          {{service.Dictionary.error.noMessage}}
+        </div>
+      </ng-container>
+
+
+      <div *ngIf="service.listNotifyMessage.length != 0" class="dropdown-footer">
+        <ul name="message-dropdown-wrapper">
+          <li name="message-dropdown-wrapper">
+            <i name="message-dropdown-wrapper" style="cursor: pointer;" class="icon-right" (click)="goPrevPage()"></i>
+          </li>
+          <li name="message-dropdown-wrapper">{{ service.Dictionary.messageComponent.page }} {{service.paginateNotifyMessage.paginate + 1}} {{service.Dictionary.messageComponent.from}}
+            {{service.paginateNotifyMessage.total}}
+          </li>
+          <li name="message-dropdown-wrapper">
+            <i name="message-dropdown-wrapper" style="cursor: pointer;" class="icon-left" (click)="goNextPage()"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

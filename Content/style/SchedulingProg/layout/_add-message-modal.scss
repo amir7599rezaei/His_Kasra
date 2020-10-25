@@ -1,0 +1,34 @@
+.add-message-modal-wrapper {
+    color: $message-color;
+    padding: 0;
+    button {
+        color: $message-color !important;
+    }
+    .modal-wrapper {
+        padding: 0;
+        .modal-message-item {
+            padding: 10px;
+            color: $message-color;
+            background-color: rgba(255, 255, 255, 0.3);
+            // border-bottom: 1px solid #ebb000;
+            &:last-child {
+                border: 0;
+            }
+            &.read {
+                background-color: rgba(255, 255, 255, 0.6);
+            }
+            .add-message-item-body {
+                font-size: 12px;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+            .input-wrapper{
+                border-radius: 5px;
+                border: 1px solid #bbbbbb;
+                width: 98%;
+                margin: 4px;
+                padding:10px;
+            }
+        }
+    }
+}

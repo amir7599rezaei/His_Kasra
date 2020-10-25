@@ -1,0 +1,48 @@
+ng-dialog{
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    min-width: 200px;
+    min-height: 200px;
+    width: calc(100% - 40px);
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    margin: auto;
+    background-color: white;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    overflow: hidden;
+
+    .ng-dialog{
+
+    }
+
+    .ng-dialog-overlay{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+        background-color: rgba(52, 61, 68, 0.6);
+    }
+
+    .dialog-body{
+        padding: 10px;
+    }
+
+    .dialog-header{
+        padding: 10px;
+
+        .dialog-close{
+            float: left;
+            line-height: 10px;
+            cursor: pointer;
+        }
+    }
+}

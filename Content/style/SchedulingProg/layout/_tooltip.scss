@@ -1,0 +1,73 @@
+.tooltip-wrapper {
+    position: absolute;
+    left: 18px;
+    top: -8px;
+    z-index: 99;
+    .tooltip-body {
+        display: none;
+        z-index: 9999;
+        .tooltip-body-wrapper {
+            right: 25px;
+            top: 0;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #dadada;
+            color: #333;
+            border-radius: 6px;
+            overflow: hidden;
+            .tooltip-body-item {
+                padding: 10px;
+                line-height: 14px;
+                @include mk-row();
+                .tooltip-icon {
+                    display: inline-block; //float:right;
+                    margin-left: 5px;
+                    vertical-align: middle;
+                }
+                span {
+                    margin: 0;
+                    font-size: 0.74rem;
+                }
+            }
+            &.error {
+                border: 1px solid $danger-color;
+                .tooltip-body-item {
+                    background-color: rgba($danger-color, 0.2);
+                    color: $red;
+                }
+            }
+            &.message {
+                border: 1px solid #ebb000;
+                .tooltip-icon {
+                    color: #ebb000;
+                }
+                .tooltip-body-item {
+                    background-color: #ffc107;
+                    color: #333;
+                    border-bottom: 1px solid #ebb000;
+                    &.read {
+                        background-color: #fff0c4;
+                    }
+                }
+                .tooltip-body-item-footer {
+                    font-size: 12px;
+                    position: relaive;
+                    .inner-wrapper {
+                        display: table;
+                        width: 100%;
+                        height: 20px;
+                        .info {
+                            display: table-cell;
+                            vertical-align: middle;
+                            color: #d6a410;
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &:hover .tooltip-body {
+        display: block;
+    }
+}

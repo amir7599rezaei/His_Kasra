@@ -1,0 +1,22 @@
+<div style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;" [ngStyle]="{display : service.showConfirmComponent.show ? 'block':'none'}">
+  <div class="notifier-wrapper success center rtl" style="z-index: 99999;border-radius: 6px;" [ngStyle]="{display : service.showConfirmComponent.show ? 'block':'none'}">
+    <div class="modal-content">
+      <div name="message-dropdown-wrapper" class="notifier-header">
+        <span class="notifier-close" name="message-dropdown-wrapper" (click)="cancel()">×</span>
+        <span class="notifier-title">{{service.Dictionary.confirmComponent.deleteTitle}}</span>
+      </div>
+
+      <div name="message-dropdown-wrapper" class="notifier-body">
+        <div class=" modal-message-item">
+          <span name="message-dropdown-wrapper">{{service.Dictionary.confirmComponent.deleteMessage}}</span>
+        </div>
+      </div>
+      <div class="notifier-footer">
+        <div class="modal-message-item" name="message-dropdown-wrapper">
+          <button (click)="confirm()" name="message-dropdown-wrapper" class="notifier-btn success" style="margin-top: 10px;border-radius: 6px;">{{service.Dictionary.confirmComponent.yes}}</button>
+          <button (click)="cancel()" name="message-dropdown-wrapper" class="notifier-btn default" style="margin-top: 10px;border-radius: 6px;">{{service.Dictionary.confirmComponent.no}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
